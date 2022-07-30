@@ -41,7 +41,7 @@ $(function () {
     $.fn.snow({
         minSize: 5,
         /* 定义雪花最小尺寸 */
-        maxSize: 50,
+        maxSize: 10,
         /* 定义雪花最大尺寸 */
         newOn: 1000 /* 定义密集程度，数字越小越密集 */
     });
