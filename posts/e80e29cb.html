@@ -15,7 +15,7 @@
 
 
 
-<title>Hello World | YH&#39;s Blog</title>
+<title>基于Hexo框架+Github的个人博客搭建-过程记录 | YH&#39;s Blog</title>
 
 
 
@@ -198,7 +198,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">基于Hexo框架+Github的个人博客搭建-过程记录</h1>
             
                 <div class="post-meta">
                     
@@ -207,29 +207,90 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">July 24, 2022&nbsp;&nbsp;23:39:40</a>
+                        Date: <a href="#">July 30, 2022&nbsp;&nbsp;16:47:33</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/">博客管理</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建个人博客主要源于三点想法：</p>
+<ol>
+<li>首先最直接的目的是记录所学所做，强迫总结；</li>
+<li>其次想借此构建出自己的知识框架；</li>
+<li>最后希望通过沟通交流促使进步！</li>
+</ol>
+<p>Hexo是基于Node.Js环境下的静态博客框架，具有轻量、简便的优点，它生成的静态站点可以托管在Github上，可集成链接多个平台内容。同时Hexo部署简单，支持超多插件和主题，是一个不错的博客搭建框架。</p>
+<hr>
+<h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><h2 id="安装Node-js环境"><a href="#安装Node-js环境" class="headerlink" title="安装Node.js环境"></a>安装Node.js环境</h2><p>由于Hexo是基于Node.Js开发的博客框架，因此首先需要安装Node.Js</p>
+<p>安装链接：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
+<p>在cmd内输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v  <span class="comment">//npm的安装嵌入在Node.js的安装中，也是说安装了Node.js也就把npm也安装了</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于npm：</p>
+<p>npm的全称是：Node package manager，也就是Node.Js的包管理器。<br>在使用Node.js开发过程中，通常会用到前人已经开发好的各种工具、功能等，这些称为第三方包，而npm就是管理这些的工具</p>
+<p>npm是世界上最大的软件注册表，来自各大洲的开源工程师使用npm来分享或者借鉴包，也有很多组织来使用npm管理他们的私有开发。</p>
+</blockquote>
+<p>结果显示版本号即为安装成功，如图：</p>
+<img src="/posts/e80e29cb/1.png" class title="检验Node.Js安装成功">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><ol>
+<li><p>进入git网站进行下载，下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+</li>
+<li><p>在cmd中输入<code>git --version</code>检查安装，显示版本号即为成功，如图：</p>
+<img src="/posts/e80e29cb/11.png" class title="检验Node.Js安装成功">
+</li>
+<li><p>我们需要将Hexo站点托管到GitHub上，因此我们需要一个GitHub账号，在GitHub官网上进行注册，官网地址：&lt;<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+</li>
+</ol>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol>
+<li>新建一个Hexo文件夹，用来存放博客配置等安装文件；</li>
+<li>打开cmd，切换位置到Hexo文件夹 ；</li>
+</ol>
+<blockquote>
+<p>cmd切换位置时注意，同一个盘切换<code>cd + space + 文件位置</code>；不同盘切换需要先切换至指定盘，例如<code>D:</code>，其后再按之前方法处理</p>
+</blockquote>
+<ol start="3">
+<li><p>输入<code>npm install hexo-cli -g</code>，warning可以忽略；</p>
+</li>
+<li><p>在cmd中输入<code>hexo -v</code>检查安装，输出系列版本号；</p>
+</li>
+<li><p>初始化Hexo：<code>hexo init Hexo(文件夹名)</code>；</p>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="title class_">Hexo</span>		<span class="comment">//进入Hexo文件夹</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>完成后，指定的文件目录下应有：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+</ul>
+</blockquote>
+<ol start="7">
+<li>输入<code>hexo g</code>生成静态网页，再输入<code>hexo s</code>打开本地服务器来查看网页（在Hexo文件夹下Git Bash），正常情况如下图：</li>
+</ol>
+<img src="/posts/e80e29cb/2.png" class title="hexo正常时的显示">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>若出现如下界面，静态网页至此部署成功！</p>
+<img src="/posts/e80e29cb/3.png" class title="hexo正常时的显示">
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
+
+<h1 id="二、将Hexo静态网站托管上传至GitHub"><a href="#二、将Hexo静态网站托管上传至GitHub" class="headerlink" title="二、将Hexo静态网站托管上传至GitHub"></a>二、将Hexo静态网站托管上传至GitHub</h1><h1 id="三、开始搭建个人博客"><a href="#三、开始搭建个人博客" class="headerlink" title="三、开始搭建个人博客"></a>三、开始搭建个人博客</h1>
         </div>
 
         
@@ -243,7 +304,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mr8lp.github.io/posts/4a17b156.html">https://mr8lp.github.io/posts/4a17b156.html</a></span>
+                        <span><a href="https://mr8lp.github.io/posts/e80e29cb.html">https://mr8lp.github.io/posts/e80e29cb.html</a></span>
                     </p>
                 
                 
@@ -266,6 +327,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86/"># 博客管理</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -276,8 +341,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/e80e29cb.html">基于Hexo框架+Github的个人博客搭建-过程记录</a>
             
+            <a class="next" rel="next" href="/posts/4a17b156.html">Hello World</a>
             
         </section>
 
