@@ -229,7 +229,7 @@
 <li>其次想借此构建出自己的知识框架；</li>
 <li>最后希望通过沟通交流促使进步！</li>
 </ol>
-<p>Hexo是基于Node.Js环境下的静态博客框架，具有轻量、简便的优点，它生成的静态站点可以托管在Github上，可集成链接多个平台内容。同时Hexo部署简单，支持超多插件和主题，是一个不错的博客搭建框架。</p>
+<p>Hexo是基于Node.Js环境下的静态博客框架，具有轻量、简便的优点，它生成的静态站点可以托管在GitHub上，可集成链接多个平台内容。同时Hexo部署简单，支持超多插件和主题，是一个不错的博客搭建框架。</p>
 <hr>
 <h1 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h1><h2 id="安装Node-js环境"><a href="#安装Node-js环境" class="headerlink" title="安装Node.js环境"></a>安装Node.js环境</h2><p>由于Hexo是基于Node.Js开发的博客框架，因此首先需要安装Node.Js</p>
 <p>安装链接：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
@@ -248,7 +248,7 @@
 <li><p>进入git网站进行下载，下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
 </li>
 <li><p>在cmd中输入<code>git --version</code>检查安装，显示版本号即为成功，如图：</p>
-<img src="/posts/e80e29cb/11.png" class title="检验Node.Js安装成功">
+<img src="/posts/e80e29cb/11.png" class title="检验Git安装成功">
 </li>
 <li><p>我们需要将Hexo站点托管到GitHub上，因此我们需要一个GitHub账号，在GitHub官网上进行注册，官网地址：&lt;<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
 </li>
@@ -267,7 +267,8 @@
 </li>
 <li><p>初始化Hexo：<code>hexo init Hexo(文件夹名)</code>；</p>
 </li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="title class_">Hexo</span>		<span class="comment">//进入Hexo文件夹</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
+<li><p>在cmd中输入以下指令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="title class_">Hexo</span>		<span class="comment">//进入Hexo文件夹</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
 </ol>
 <blockquote>
 <p>完成后，指定的文件目录下应有：</p>
@@ -283,14 +284,108 @@
 <ol start="7">
 <li>输入<code>hexo g</code>生成静态网页，再输入<code>hexo s</code>打开本地服务器来查看网页（在Hexo文件夹下Git Bash），正常情况如下图：</li>
 </ol>
-<img src="/posts/e80e29cb/2.png" class title="hexo正常时的显示">
+<img src="/posts/e80e29cb/2.png" class title="本地服务器正常运行时的显示">
 
 <p>若出现如下界面，静态网页至此部署成功！</p>
-<img src="/posts/e80e29cb/3.png" class title="hexo正常时的显示">
+<img src="/posts/e80e29cb/3.png" class title="hexo静态网页部署成功时的显示">
 
 
 
-<h1 id="二、将Hexo静态网站托管上传至GitHub"><a href="#二、将Hexo静态网站托管上传至GitHub" class="headerlink" title="二、将Hexo静态网站托管上传至GitHub"></a>二、将Hexo静态网站托管上传至GitHub</h1><h1 id="三、开始搭建个人博客"><a href="#三、开始搭建个人博客" class="headerlink" title="三、开始搭建个人博客"></a>三、开始搭建个人博客</h1>
+<h1 id="二、将Hexo静态网站托管上传至GitHub"><a href="#二、将Hexo静态网站托管上传至GitHub" class="headerlink" title="二、将Hexo静态网站托管上传至GitHub"></a>二、将Hexo静态网站托管上传至GitHub</h1><ol>
+<li><p>新建一个与GitHub用户名相同的仓库，将Hexo静态网站托管在GitHub上，需要一个仓库存储对应博客文件；</p>
+</li>
+<li><p>生成SSH密钥：</p>
+<ul>
+<li><p>在Git bash 中输入（类似于“登录”，使GitHub确定你是这个账户的使用者）；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;   //GitHub用户名</span><br><span class="line">git config --global user.email &quot;youremail&quot; //注册GitHub时的邮箱</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><ul>
+<li><p>输入<code>ssh-keygen -t rsa -C &quot;注册GitHub时的邮箱&quot;</code>，三次回车确认，生成SSH Key；</p>
+</li>
+<li><p>再输入<code>cat ~/.ssh/id_rsa.pub</code>，输出SSH Key，如图，全部复制；</p>
+<img src="/posts/e80e29cb/4.png" class title="SSH key"></li>
+</ul>
+</li>
+<li><p>在GitHub的setting中，找到SSH keys，选择<code>new ssh key</code>；</p>
+</li>
+<li><p>将2中复制的内容粘贴进入key，点击Add SSH key，注意如图格式输入：</p>
+<img src="/posts/e80e29cb/5.png" class title="SSH key输入的格式要求">
+
+<img src="/posts/e80e29cb/6.png" class title="SSH key正确添加的显示">
+</li>
+<li><p>打开博客的_config.yml配置文件，修改最后的一段配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repository</span>: <span class="attr">https</span>:<span class="comment">//github.com/Mr8LP/Mr8LP.github.io.git//储存库的Http链接</span></span><br><span class="line">  <span class="attr">branch</span>: master<span class="comment">//需要自己新建</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Git Bash中输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save<span class="comment">//安装deploy-git，也就是部署的命令,这样才能用命令部署到GitHub</span></span><br><span class="line">hexo clean                          <span class="comment">//用于清理缓存文件</span></span><br><span class="line">hexo g                              <span class="comment">//生成静态网页</span></span><br><span class="line">hexo d                              <span class="comment">//部署文章 </span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将GitHub以及GitHub Page上的分支改成master；</p>
+</li>
+<li><p>登录个人博客查看，如果显示下图即为上传成功：</p>
+<img src="/posts/e80e29cb/7.png" class title="SSH key正确添加的显示"></li>
+</ol>
+<h1 id="三、开始配置个人博客信息"><a href="#三、开始配置个人博客信息" class="headerlink" title="三、开始配置个人博客信息"></a>三、开始配置个人博客信息</h1><p>完成了以上内容，个人博客的搭建已完成了一半；剩下的也就是博客的个性化定制，包括博客主题的选取、基本信息的填写以及各子页面的布置，下面将按照我博客的个性化配置进行介绍：</p>
+<h2 id="博客主题的选取"><a href="#博客主题的选取" class="headerlink" title="博客主题的选取"></a>博客主题的选取</h2><p>对于博客主题的选取，我选取了Chic主题，主题链接：<a target="_blank" rel="noopener" href="https://github.com/Siricee/hexo-theme-Chic">https://github.com/Siricee/hexo-theme-Chic</a>，这个主题支持PC和移动端的预览，并且整体分类清晰、UI界面大气美观，还支持一键部署深色模式，个人感觉是一个不错的主题选择；从主流上来看，NextT主题非常火爆，也值得考虑；</p>
+<h3 id="其他装饰"><a href="#其他装饰" class="headerlink" title="其他装饰"></a>其他装饰</h3><p>除了基本主题外，我还增加了网页<strong>背景雪花飘落</strong>以及<strong>动态线条效果</strong>；</p>
+<h2 id="基本信息的填写"><a href="#基本信息的填写" class="headerlink" title="基本信息的填写"></a>基本信息的填写</h2><p>在配置个人博客信息阶段，建议用VScode打开Hexo整个文件夹，方便修改各项配置；</p>
+<p>需要修改的主要是以下几个文件夹的内容（其余文件夹的作用详见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/glory-yl/p/15399422.html">https://www.cnblogs.com/glory-yl/p/15399422.html</a>）：</p>
+<img src="/posts/e80e29cb/8.png" class title="需要修改的配置文件夹">
+
+<h2 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h2><p>这个主要是模板文件，存储了草稿、文章、标签等的页面模板，一般也不做修改；</p>
+<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p>包含生成网页所需要的源文件，包含最重要的 Markdown 文稿（大爱Typora这款md编辑器），如图：</p>
+<img src="/posts/e80e29cb/9.png" class title="source的子文件夹及其作用">
+
+<p>其中这块最重要的是如何撰写文章以及撰写文章所需要的Markdown语言撰写规则：</p>
+<p><a target="_blank" rel="noopener" href="http://www.javashuo.com/article/p-bfftnikd-hn.html">http://www.javashuo.com/article/p-bfftnikd-hn.html</a></p>
+<h2 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h2><p>包含选择Hexo主题的相关配置，这个文件夹涉及的是具体页面的部署，例如网站打开时显示的图标，个人头像、标语、链接指向、实用插件的安装等等</p>
+<h2 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h2><p>网站的整体配置文件</p>
+<h1 id="四、搭建个人博客用到的文章链接"><a href="#四、搭建个人博客用到的文章链接" class="headerlink" title="四、搭建个人博客用到的文章链接"></a>四、搭建个人博客用到的文章链接</h1><table>
+<thead>
+<tr>
+<th align="center">文章简介</th>
+<th align="center">文章链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Hexo常用命令详解</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wsmrzx/p/9439448.html">https://www.cnblogs.com/wsmrzx/p/9439448.html</a></td>
+</tr>
+<tr>
+<td align="center">利用Hexo框架搭建博客教程及相关配置文件的介绍</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029/">https://blog.csdn.net/sinat_37781304/article/details/82729029/</a></td>
+</tr>
+<tr>
+<td align="center">利用Hexo撰写文章及Markdown语言撰写规则</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://www.javashuo.com/article/p-bfftnikd-hn.html">http://www.javashuo.com/article/p-bfftnikd-hn.html</a></td>
+</tr>
+<tr>
+<td align="center">Hexo使用攻略-添加分类及标签</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1699316">https://cloud.tencent.com/developer/article/1699316</a></td>
+</tr>
+<tr>
+<td align="center">hexo+next添加雪花飘落背景效果</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/QFREX/article/details/108798945">https://blog.csdn.net/QFREX/article/details/108798945</a></td>
+</tr>
+<tr>
+<td align="center">Hexo自动文章固定链接插件 abbrlink（官方网页介绍更好）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/xxly1994/article/details/108188722">https://blog.csdn.net/xxly1994/article/details/108188722</a></td>
+</tr>
+<tr>
+<td align="center">hexo博客添加标签、分类、归档、关于等页面</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15477117/4919707">https://blog.51cto.com/u_15477117/4919707</a></td>
+</tr>
+<tr>
+<td align="center">Hexo nexT主题使用攻略基础——添加分类、标签及关于</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48927364/article/details/123295436">https://blog.csdn.net/weixin_48927364/article/details/123295436</a></td>
+</tr>
+<tr>
+<td align="center">解决Hexo图片无法显示问题</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://t.zoukankan.com/Jesee-p-11234387.html">http://t.zoukankan.com/Jesee-p-11234387.html</a></td>
+</tr>
+</tbody></table>
+<p>持续更新记录中……</p>
+
         </div>
 
         
