@@ -224,7 +224,7 @@
 
         <div class="post-content">
             <h1 id="利用ANSYS软件进行有限元分析的步骤"><a href="#利用ANSYS软件进行有限元分析的步骤" class="headerlink" title="利用ANSYS软件进行有限元分析的步骤"></a>利用ANSYS软件进行有限元分析的步骤</h1><blockquote>
-<p>指定文件名和标题名——定义单元属性——定义材料属性——创建有限元模型——对实体模型进行网格划分——施加载荷——求解</p>
+<p>指定文件名和标题名——定义单元属性——定义材料属性——创建有限元模型——对实体模型进行网格划分——施加约束和载荷——求解</p>
 </blockquote>
 <hr>
 <h1 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h1><blockquote>
@@ -317,6 +317,7 @@
 
 
 
+<hr>
 <h1 id="创建有限元模型命令流"><a href="#创建有限元模型命令流" class="headerlink" title="创建有限元模型命令流"></a>创建有限元模型命令流</h1><h2 id="k-定义关键点"><a href="#k-定义关键点" class="headerlink" title="k(定义关键点)"></a>k(定义关键点)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints</p>
 <p>Description : K, NPT, X, Y, Z</p>
 <table>
@@ -355,7 +356,91 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l,1,2</span><br></pre></td></tr></table></figure>
 
-<h1 id><a href="#" class="headerlink" title></a></h1>
+<hr>
+<h1 id="对实体模型进行网格划分"><a href="#对实体模型进行网格划分" class="headerlink" title="对实体模型进行网格划分"></a>对实体模型进行网格划分</h1><h2 id="latt-分配直线网格属性"><a href="#latt-分配直线网格属性" class="headerlink" title="latt(分配直线网格属性)"></a>latt(分配直线网格属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes</p>
+<p>Description : LATT, MAT, REAL, TYPE, –, KB, KE, SECNUM</p>
+<table>
+<thead>
+<tr>
+<th align="center">LATT</th>
+<th align="center">MAT</th>
+<th align="center">REAL</th>
+<th align="center">TYPE</th>
+<th align="center">–</th>
+<th align="center">KB, KE</th>
+<th align="center">SECNUM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Material numbe</td>
+<td align="center">real constant set number</td>
+<td align="center">type number</td>
+<td align="center">Unused field</td>
+<td align="center">Beginning and ending orientation keypoints to be associated with selected, unmeshed lines.</td>
+<td align="center">section number</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">latt,1,,1,,,3,1</span><br></pre></td></tr></table></figure>
+
+<h2 id="lesize-指定未网格化线的间距及间距比"><a href="#lesize-指定未网格化线的间距及间距比" class="headerlink" title="lesize(指定未网格化线的间距及间距比)"></a>lesize(指定未网格化线的间距及间距比)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Size Cntrls&gt;ManualSize</p>
+<p>Description : LESIZE, NL1, SIZE, ANGSIZ, NDIV, SPACE, KFORC, LAYER1, LAYER2, KYNDIV</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lesize,1,,,10</span><br></pre></td></tr></table></figure>
+
+<h2 id="lmesh"><a href="#lmesh" class="headerlink" title="lmesh"></a>lmesh</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh&gt;Line</p>
+<p>Description : LMESH, NL1, NL2, NINC</p>
+<p>Mesh lines from NL1 to NL2 in steps of NINC (defaults to 1). If NL1 &#x3D; ALL, NL2 and NINC are ignored and all selected lines are meshed.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lmesh,all</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="施加约束和载荷"><a href="#施加约束和载荷" class="headerlink" title="施加约束和载荷"></a>施加约束和载荷</h1><h2 id="dk-关键点上施加约束"><a href="#dk-关键点上施加约束" class="headerlink" title="dk(关键点上施加约束)"></a>dk(关键点上施加约束)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
+<p>Description : DK, KPOI, Lab, VALUE, VALUE2, KEXPND, Lab2, Lab3, Lab4, Lab5, Lab6</p>
+<table>
+<thead>
+<tr>
+<th align="center">DK</th>
+<th align="center">KPOI</th>
+<th align="center">Lab</th>
+<th align="center">VALUE</th>
+<th align="center">VALUE2, KEXPND, Lab2-6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Keypoint at which constraint is to be specified&#x2F;all</td>
+<td align="center">Valid degree of freedom label,Ux-z, ROTx-z,all</td>
+<td align="center">Degree of freedom value</td>
+<td align="center">ANSYS help</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dk,1,all,0</span><br></pre></td></tr></table></figure>
+
+<h2 id="fk-关键点上施加载荷"><a href="#fk-关键点上施加载荷" class="headerlink" title="fk(关键点上施加载荷)"></a>fk(关键点上施加载荷)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
+<p>Description : FK, KPOI, Lab, VALUE, VALUE2</p>
+<table>
+<thead>
+<tr>
+<th align="center">FK</th>
+<th align="center">KPOI</th>
+<th align="center">Lab</th>
+<th align="center">VALUE, VALUE2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Keypoint at which force is to be specified&#x2F;all</td>
+<td align="center">Valid force label,Fx-z,Mx-z</td>
+<td align="center">Force or moment value</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fk,2,fy,-10e3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">allsel,all</span><br><span class="line">solve</span><br></pre></td></tr></table></figure>
+
+
+
+
         </div>
 
         
