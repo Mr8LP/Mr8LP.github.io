@@ -230,13 +230,39 @@
 <h1 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h1><blockquote>
 <ol>
 <li>GUI 方法：直接操作软件界面，简单直观，交互性强，但是效率偏低</li>
-<li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高</li>
+<li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高，常利用 Visio Code，Ultra Edit，notepad++进行编辑</li>
 </ol>
 </blockquote>
 <p>+++</p>
-<h1 id="前处理的命令流"><a href="#前处理的命令流" class="headerlink" title="前处理的命令流"></a>前处理的命令流</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish</span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
+<h1 id="前处理的命令流"><a href="#前处理的命令流" class="headerlink" title="前处理的命令流"></a>前处理的命令流</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish </span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
 
-
+<h2 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h2><p><em>GUI : main menu-finishExits</em></p>
+<p><em>Description : any of the ANSYS processors or the DISPLAY program. For the ANSYS processors, data will remain intact in the database but the database is not automatically written to a file (use the SAVE command to write the database to a file)</em></p>
+<h2 id="x2F-clean"><a href="#x2F-clean" class="headerlink" title="&#x2F;clean"></a>&#x2F;clean</h2><p><em>Description : It can be used by the user to perform clean-up operation or other actions that are needed at the end of a job.</em></p>
+<h2 id="x2F-prep7"><a href="#x2F-prep7" class="headerlink" title="&#x2F;prep7"></a>&#x2F;prep7</h2><p><em>GUI ：Main Menu&gt;Preprocessor</em></p>
+<p><em>Description ： Enters the model creation preprocessor.</em></p>
+<h2 id="！"><a href="#！" class="headerlink" title="！***************"></a>！***************</h2><p><em>Description ： annotation symbol，used for code annotation or further explanation .</em></p>
+<h2 id="et-定义单元类型"><a href="#et-定义单元类型" class="headerlink" title="et(定义单元类型)"></a>et(定义单元类型)</h2><p><em>GUI : Menu Paths:Main Menu&gt;Preprocessor Element Type&gt;Add&#x2F;Edit&#x2F;Delete</em></p>
+<p><em>Description : ET,ITYPE,Ename,KOPT1,KOPT2,KOPT3,KOPT4,KOPT5,KOPT6,INOPR</em></p>
+<table>
+<thead>
+<tr>
+<th align="center">ET</th>
+<th align="center">ITYPE</th>
+<th align="center">Ename (ommited)</th>
+<th align="center">KOP1-7 (ommited)</th>
+<th align="center">INOPR(ommited)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Arbitrary local element type number.</td>
+<td align="center">Element name (or number)  given in the element library,The name consists of a category prefix and a unique number, such as PIPE288.</td>
+<td align="center">KEYOPT values (1 through 6) for this element</td>
+<td align="center">If 1, suppress all element solution printout for this element type.</td>
+</tr>
+</tbody></table>
+<h2 id="mp-定义材料属性"><a href="#mp-定义材料属性" class="headerlink" title="mp(定义材料属性)"></a>mp(定义材料属性)</h2>
         </div>
 
         
