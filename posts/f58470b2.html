@@ -129,6 +129,71 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
 
     
     <article class="post-wrap">
@@ -158,7 +223,18 @@
         </header>
 
         <div class="post-content">
-            
+            <h1 id="利用ANSYS软件进行有限元分析的步骤"><a href="#利用ANSYS软件进行有限元分析的步骤" class="headerlink" title="利用ANSYS软件进行有限元分析的步骤"></a>利用ANSYS软件进行有限元分析的步骤</h1><blockquote>
+<p>指定文件名和标题名——定义单元属性——定义材料属性——创建有限元模型——对实体模型进行网格划分——施加载荷——求解</p>
+</blockquote>
+<hr>
+<h1 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h1><blockquote>
+<ol>
+<li>GUI 方法：直接操作软件界面，简单直观，交互性强，但是效率偏低</li>
+<li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高</li>
+</ol>
+</blockquote>
+<p>+++</p>
+
         </div>
 
         
