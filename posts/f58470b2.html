@@ -230,20 +230,20 @@
 <h1 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h1><blockquote>
 <ol>
 <li>GUI 方法：直接操作软件界面，简单直观，交互性强，但是效率偏低</li>
-<li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高，常利用 Visio Code，Ultra Edit，notepad++进行编辑</li>
+<li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高，常利用 Visio Code，Ultra Edit，notepad++进行编辑，详情查看ANSYS help文档查看</li>
 </ol>
 </blockquote>
-<p>+++</p>
-<h1 id="前处理的命令流"><a href="#前处理的命令流" class="headerlink" title="前处理的命令流"></a>前处理的命令流</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish </span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="前处理命令流"><a href="#前处理命令流" class="headerlink" title="前处理命令流"></a>前处理命令流</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish </span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
 
 <h2 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h2><p><em>GUI : main menu-finishExits</em></p>
 <p><em>Description : any of the ANSYS processors or the DISPLAY program. For the ANSYS processors, data will remain intact in the database but the database is not automatically written to a file (use the SAVE command to write the database to a file)</em></p>
 <h2 id="x2F-clean"><a href="#x2F-clean" class="headerlink" title="&#x2F;clean"></a>&#x2F;clean</h2><p><em>Description : It can be used by the user to perform clean-up operation or other actions that are needed at the end of a job.</em></p>
-<h2 id="x2F-prep7"><a href="#x2F-prep7" class="headerlink" title="&#x2F;prep7"></a>&#x2F;prep7</h2><p><em>GUI ：Main Menu&gt;Preprocessor</em></p>
-<p><em>Description ： Enters the model creation preprocessor.</em></p>
-<h2 id="！"><a href="#！" class="headerlink" title="！***************"></a>！***************</h2><p><em>Description ： annotation symbol，used for code annotation or further explanation .</em></p>
-<h2 id="et-定义单元类型"><a href="#et-定义单元类型" class="headerlink" title="et(定义单元类型)"></a>et(定义单元类型)</h2><p><em>GUI : Menu Paths:Main Menu&gt;Preprocessor Element Type&gt;Add&#x2F;Edit&#x2F;Delete</em></p>
-<p><em>Description : ET,ITYPE,Ename,KOPT1,KOPT2,KOPT3,KOPT4,KOPT5,KOPT6,INOPR</em></p>
+<h2 id="x2F-prep7"><a href="#x2F-prep7" class="headerlink" title="&#x2F;prep7"></a>&#x2F;prep7</h2><p>GUI ：Main Menu&gt;Preprocessor</p>
+<p>Description ： Enters the model creation preprocessor.</p>
+<h2 id="！"><a href="#！" class="headerlink" title="！"></a>！</h2><p>Description ： annotation symbol，used for code annotation or further explanation .</p>
+<h2 id="et-定义单元类型"><a href="#et-定义单元类型" class="headerlink" title="et(定义单元类型)"></a>et(定义单元类型)</h2><p>GUI : Menu Paths:Main Menu&gt;Preprocessor Element Type&gt;Add&#x2F;Edit&#x2F;Delete</p>
+<p>Description : ET,ITYPE,Ename,KOPT1,KOPT2,KOPT3,KOPT4,KOPT5,KOPT6,INOPR</p>
 <table>
 <thead>
 <tr>
@@ -251,7 +251,7 @@
 <th align="center">ITYPE</th>
 <th align="center">Ename (ommited)</th>
 <th align="center">KOP1-7 (ommited)</th>
-<th align="center">INOPR(ommited)</th>
+<th align="center">INOPR (ommited)</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -262,7 +262,100 @@
 <td align="center">If 1, suppress all element solution printout for this element type.</td>
 </tr>
 </tbody></table>
-<h2 id="mp-定义材料属性"><a href="#mp-定义材料属性" class="headerlink" title="mp(定义材料属性)"></a>mp(定义材料属性)</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">et,1,beam189</span><br></pre></td></tr></table></figure>
+
+<h2 id="mp-定义材料属性"><a href="#mp-定义材料属性" class="headerlink" title="mp(定义材料属性)"></a>mp(定义材料属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Material Props</p>
+<p>Description : MP, Lab, MAT, C0, C1, C2, C3, C4</p>
+<table>
+<thead>
+<tr>
+<th align="center">MP</th>
+<th align="center">Lab</th>
+<th align="center">MAT</th>
+<th align="center">C0</th>
+<th align="center">C1-C4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Valid material property label. Such as: dens, prxy,ex…</td>
+<td align="center">Material reference number to be associated with the elements</td>
+<td align="center">Material property value</td>
+<td align="center">Coefficients of the linear, quadratic, cubic, and quartic terms, respectively</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mp,dens,1,1.7850e-12   !密度</span><br><span class="line">mp,ex,1,2.1e5          !弹性模量</span><br><span class="line">mp,prxy,1,0.3          !泊松比</span><br></pre></td></tr></table></figure>
+
+<h2 id="sectype-定义材料截面属性"><a href="#sectype-定义材料截面属性" class="headerlink" title="sectype(定义材料截面属性)"></a>sectype(定义材料截面属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
+<p>Description : SECTYPE, SECID, Type, Subtype, Name, REFINEKEY</p>
+<table>
+<thead>
+<tr>
+<th align="center">SECTYPE</th>
+<th align="center">SECID</th>
+<th align="center">Type</th>
+<th align="center">Subtype</th>
+<th align="center">Name</th>
+<th align="center">REFINEKEY</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Section identification number.</td>
+<td align="center">Beam, Link, Taper…</td>
+<td align="center">subtype</td>
+<td align="center">An eight-character name for the section.</td>
+<td align="center">Sets mesh refinement level for thin-walled beam sections.  Valid values are 0 (the default - no mesh refinement) through 5 (high level of mesh refinement).  This value has meaning only when Type &#x3D; BEAM</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sectype,1,beam,rect</span><br></pre></td></tr></table></figure>
+
+<h2 id="secdata-定义材料截面尺寸"><a href="#secdata-定义材料截面尺寸" class="headerlink" title="secdata(定义材料截面尺寸)"></a>secdata(定义材料截面尺寸)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
+<p>Description : SECDATA, VAL1, VAL2, VAL3, VAL4, VAL5, VAL6, VAL7, VAL8, VAL9, VAL10, VAL11, VAL12</p>
+<p><em>Describe the geometry of a section. The terms VAL1, VAL2, etc. are specialized for each type of cross-section.</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secdata,30,50  !B=30mm H=50mm</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="创建有限元模型命令流"><a href="#创建有限元模型命令流" class="headerlink" title="创建有限元模型命令流"></a>创建有限元模型命令流</h1><h2 id="k-定义关键点"><a href="#k-定义关键点" class="headerlink" title="k(定义关键点)"></a>k(定义关键点)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints</p>
+<p>Description : K, NPT, X, Y, Z</p>
+<table>
+<thead>
+<tr>
+<th align="center">K</th>
+<th align="center">NPT</th>
+<th align="center">X,Y,Z</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Reference number for keypoint. If zero, the lowest available number is assigned,mini&#x3D;1</td>
+<td align="center">Keypoint location in the active coordinate system</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k,1,0,0,0</span><br><span class="line">k,2,1000,0,0</span><br><span class="line">k,3,500,500,0</span><br></pre></td></tr></table></figure>
+
+<h2 id="L-从点创建线"><a href="#L-从点创建线" class="headerlink" title="L(从点创建线)"></a>L(从点创建线)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;In Active Coord</p>
+<p>Description : L, P1, P2, NDIV, SPACE, XV1, YV1, ZV1, XV2, YV2, ZV2</p>
+<table>
+<thead>
+<tr>
+<th align="center">L</th>
+<th align="center">P1</th>
+<th align="center">P2</th>
+<th align="center">NDIV-ZV2（ommited）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Keypoint at the beginning of line</td>
+<td align="center">Keypoint at the end of line.</td>
+<td align="center">look up ANSYS help</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l,1,2</span><br></pre></td></tr></table></figure>
+
+<h1 id><a href="#" class="headerlink" title></a></h1>
         </div>
 
         
