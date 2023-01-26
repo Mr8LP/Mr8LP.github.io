@@ -223,26 +223,26 @@
         </header>
 
         <div class="post-content">
-            <h1 id="利用ANSYS软件进行有限元分析的步骤"><a href="#利用ANSYS软件进行有限元分析的步骤" class="headerlink" title="利用ANSYS软件进行有限元分析的步骤"></a>利用ANSYS软件进行有限元分析的步骤</h1><blockquote>
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="利用ANSYS软件进行有限元分析的步骤"><a href="#利用ANSYS软件进行有限元分析的步骤" class="headerlink" title="利用ANSYS软件进行有限元分析的步骤"></a>利用ANSYS软件进行有限元分析的步骤</h2><blockquote>
 <p>指定文件名和标题名——定义单元属性——定义材料属性——创建有限元模型——对实体模型进行网格划分——施加约束和载荷——求解</p>
 </blockquote>
 <hr>
-<h1 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h1><blockquote>
+<h2 id="ANSYS软件分析的两种方法"><a href="#ANSYS软件分析的两种方法" class="headerlink" title="ANSYS软件分析的两种方法"></a>ANSYS软件分析的两种方法</h2><blockquote>
 <ol>
 <li>GUI 方法：直接操作软件界面，简单直观，交互性强，但是效率偏低</li>
 <li>命令流方法：采用APDL语言创建命令流，难度较大，交互性差，效率较高，常利用 Visio Code，Ultra Edit，notepad++进行编辑，详情查看ANSYS help文档查看</li>
 </ol>
 </blockquote>
 <hr>
-<h1 id="前处理命令流"><a href="#前处理命令流" class="headerlink" title="前处理命令流"></a>前处理命令流</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish </span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
+<h2 id="前处理命令流"><a href="#前处理命令流" class="headerlink" title="前处理命令流"></a>前处理命令流</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finish </span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br></pre></td></tr></table></figure>
 
-<h2 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h2><p><em>GUI : main menu-finishExits</em></p>
+<h3 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h3><p><em>GUI : main menu-finishExits</em></p>
 <p><em>Description : any of the ANSYS processors or the DISPLAY program. For the ANSYS processors, data will remain intact in the database but the database is not automatically written to a file (use the SAVE command to write the database to a file)</em></p>
-<h2 id="x2F-clean"><a href="#x2F-clean" class="headerlink" title="&#x2F;clean"></a>&#x2F;clean</h2><p><em>Description : It can be used by the user to perform clean-up operation or other actions that are needed at the end of a job.</em></p>
-<h2 id="x2F-prep7"><a href="#x2F-prep7" class="headerlink" title="&#x2F;prep7"></a>&#x2F;prep7</h2><p>GUI ：Main Menu&gt;Preprocessor</p>
+<h3 id="x2F-clean"><a href="#x2F-clean" class="headerlink" title="&#x2F;clean"></a>&#x2F;clean</h3><p><em>Description : It can be used by the user to perform clean-up operation or other actions that are needed at the end of a job.</em></p>
+<h3 id="x2F-prep7"><a href="#x2F-prep7" class="headerlink" title="&#x2F;prep7"></a>&#x2F;prep7</h3><p>GUI ：Main Menu&gt;Preprocessor</p>
 <p>Description ： Enters the model creation preprocessor.</p>
-<h2 id="！"><a href="#！" class="headerlink" title="！"></a>！</h2><p>Description ： annotation symbol，used for code annotation or further explanation .</p>
-<h2 id="et-定义单元类型"><a href="#et-定义单元类型" class="headerlink" title="et(定义单元类型)"></a>et(定义单元类型)</h2><p>GUI : Menu Paths:Main Menu&gt;Preprocessor Element Type&gt;Add&#x2F;Edit&#x2F;Delete</p>
+<h3 id="！"><a href="#！" class="headerlink" title="！"></a>！</h3><p>Description ： annotation symbol，used for code annotation or further explanation .</p>
+<h3 id="et-定义单元类型"><a href="#et-定义单元类型" class="headerlink" title="et(定义单元类型)"></a>et(定义单元类型)</h3><p>GUI : Menu Paths:Main Menu&gt;Preprocessor Element Type&gt;Add&#x2F;Edit&#x2F;Delete</p>
 <p>Description : ET,ITYPE,Ename,KOPT1,KOPT2,KOPT3,KOPT4,KOPT5,KOPT6,INOPR</p>
 <table>
 <thead>
@@ -264,7 +264,7 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">et,1,beam189</span><br></pre></td></tr></table></figure>
 
-<h2 id="mp-定义材料属性"><a href="#mp-定义材料属性" class="headerlink" title="mp(定义材料属性)"></a>mp(定义材料属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Material Props</p>
+<h3 id="mp-定义材料属性"><a href="#mp-定义材料属性" class="headerlink" title="mp(定义材料属性)"></a>mp(定义材料属性)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Material Props</p>
 <p>Description : MP, Lab, MAT, C0, C1, C2, C3, C4</p>
 <table>
 <thead>
@@ -286,7 +286,7 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mp,dens,1,1.7850e-12   !密度</span><br><span class="line">mp,ex,1,2.1e5          !弹性模量</span><br><span class="line">mp,prxy,1,0.3          !泊松比</span><br></pre></td></tr></table></figure>
 
-<h2 id="sectype-定义材料截面属性"><a href="#sectype-定义材料截面属性" class="headerlink" title="sectype(定义材料截面属性)"></a>sectype(定义材料截面属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
+<h3 id="sectype-定义材料截面属性"><a href="#sectype-定义材料截面属性" class="headerlink" title="sectype(定义材料截面属性)"></a>sectype(定义材料截面属性)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
 <p>Description : SECTYPE, SECID, Type, Subtype, Name, REFINEKEY</p>
 <table>
 <thead>
@@ -310,15 +310,15 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sectype,1,beam,rect</span><br></pre></td></tr></table></figure>
 
-<h2 id="secdata-定义材料截面尺寸"><a href="#secdata-定义材料截面尺寸" class="headerlink" title="secdata(定义材料截面尺寸)"></a>secdata(定义材料截面尺寸)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
+<h3 id="secdata-定义材料截面尺寸"><a href="#secdata-定义材料截面尺寸" class="headerlink" title="secdata(定义材料截面尺寸)"></a>secdata(定义材料截面尺寸)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Sections</p>
 <p>Description : SECDATA, VAL1, VAL2, VAL3, VAL4, VAL5, VAL6, VAL7, VAL8, VAL9, VAL10, VAL11, VAL12</p>
 <p><em>Describe the geometry of a section. The terms VAL1, VAL2, etc. are specialized for each type of cross-section.</em></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secdata,30,50  !B=30mm H=50mm</span><br></pre></td></tr></table></figure>
 
-<img src="/posts/f58470b2/11.png" class title="test image">
+<img src="/posts/Hexo\source\_posts\ANSYS-BASIC\11.png" alt="beam sectype" style="zoom:70%;">
 
 <hr>
-<h1 id="创建有限元模型命令流"><a href="#创建有限元模型命令流" class="headerlink" title="创建有限元模型命令流"></a>创建有限元模型命令流</h1><h2 id="k-定义关键点"><a href="#k-定义关键点" class="headerlink" title="k(定义关键点)"></a>k(定义关键点)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints</p>
+<h2 id="创建有限元模型命令流"><a href="#创建有限元模型命令流" class="headerlink" title="创建有限元模型命令流"></a>创建有限元模型命令流</h2><h3 id="k-定义关键点"><a href="#k-定义关键点" class="headerlink" title="k(定义关键点)"></a>k(定义关键点)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints</p>
 <p>Description : K, NPT, X, Y, Z</p>
 <table>
 <thead>
@@ -336,7 +336,7 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k,1,0,0,0</span><br><span class="line">k,2,1000,0,0</span><br><span class="line">k,3,500,500,0</span><br></pre></td></tr></table></figure>
 
-<h2 id="L-从点创建线"><a href="#L-从点创建线" class="headerlink" title="L(从点创建线)"></a>L(从点创建线)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;In Active Coord</p>
+<h3 id="L-从点创建线"><a href="#L-从点创建线" class="headerlink" title="L(从点创建线)"></a>L(从点创建线)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;In Active Coord</p>
 <p>Description : L, P1, P2, NDIV, SPACE, XV1, YV1, ZV1, XV2, YV2, ZV2</p>
 <table>
 <thead>
@@ -356,8 +356,11 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l,1,2</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>命令流L的想过也因坐标系的不同而异，比如在笛卡尔坐标系下，L生成的是一条直线，而在柱坐标系下，L生成的是一段圆弧</p>
+</blockquote>
 <hr>
-<h1 id="对实体模型进行网格划分"><a href="#对实体模型进行网格划分" class="headerlink" title="对实体模型进行网格划分"></a>对实体模型进行网格划分</h1><h2 id="latt-分配直线网格属性"><a href="#latt-分配直线网格属性" class="headerlink" title="latt(分配直线网格属性)"></a>latt(分配直线网格属性)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes</p>
+<h2 id="对实体模型进行网格划分"><a href="#对实体模型进行网格划分" class="headerlink" title="对实体模型进行网格划分"></a>对实体模型进行网格划分</h2><h3 id="latt-分配直线网格属性"><a href="#latt-分配直线网格属性" class="headerlink" title="latt(分配直线网格属性)"></a>latt(分配直线网格属性)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes</p>
 <p>Description : LATT, MAT, REAL, TYPE, –, KB, KE, SECNUM</p>
 <table>
 <thead>
@@ -383,17 +386,17 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">latt,1,,1,,,3,1</span><br></pre></td></tr></table></figure>
 
-<h2 id="lesize-指定未网格化线的间距及间距比"><a href="#lesize-指定未网格化线的间距及间距比" class="headerlink" title="lesize(指定未网格化线的间距及间距比)"></a>lesize(指定未网格化线的间距及间距比)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Size Cntrls&gt;ManualSize</p>
+<h3 id="lesize-指定未网格化线的间距及间距比"><a href="#lesize-指定未网格化线的间距及间距比" class="headerlink" title="lesize(指定未网格化线的间距及间距比)"></a>lesize(指定未网格化线的间距及间距比)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Size Cntrls&gt;ManualSize</p>
 <p>Description : LESIZE, NL1, SIZE, ANGSIZ, NDIV, SPACE, KFORC, LAYER1, LAYER2, KYNDIV</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lesize,1,,,10</span><br></pre></td></tr></table></figure>
 
-<h2 id="lmesh"><a href="#lmesh" class="headerlink" title="lmesh"></a>lmesh</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh&gt;Line</p>
+<h3 id="lmesh"><a href="#lmesh" class="headerlink" title="lmesh"></a>lmesh</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh&gt;Line</p>
 <p>Description : LMESH, NL1, NL2, NINC</p>
 <p>Mesh lines from NL1 to NL2 in steps of NINC (defaults to 1). If NL1 &#x3D; ALL, NL2 and NINC are ignored and all selected lines are meshed.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lmesh,all</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="施加约束和载荷"><a href="#施加约束和载荷" class="headerlink" title="施加约束和载荷"></a>施加约束和载荷</h1><h2 id="dk-关键点上施加约束"><a href="#dk-关键点上施加约束" class="headerlink" title="dk(关键点上施加约束)"></a>dk(关键点上施加约束)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
+<h2 id="施加约束和载荷"><a href="#施加约束和载荷" class="headerlink" title="施加约束和载荷"></a>施加约束和载荷</h2><h3 id="dk-关键点上施加约束"><a href="#dk-关键点上施加约束" class="headerlink" title="dk(关键点上施加约束)"></a>dk(关键点上施加约束)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
 <p>Description : DK, KPOI, Lab, VALUE, VALUE2, KEXPND, Lab2, Lab3, Lab4, Lab5, Lab6</p>
 <table>
 <thead>
@@ -415,7 +418,7 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dk,1,all,0</span><br></pre></td></tr></table></figure>
 
-<h2 id="fk-关键点上施加载荷"><a href="#fk-关键点上施加载荷" class="headerlink" title="fk(关键点上施加载荷)"></a>fk(关键点上施加载荷)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
+<h3 id="fk-关键点上施加载荷"><a href="#fk-关键点上施加载荷" class="headerlink" title="fk(关键点上施加载荷)"></a>fk(关键点上施加载荷)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Apply</p>
 <p>Description : FK, KPOI, Lab, VALUE, VALUE2</p>
 <table>
 <thead>
@@ -436,11 +439,94 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fk,2,fy,-10e3</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">allsel,all</span><br><span class="line">solve</span><br></pre></td></tr></table></figure>
+<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">allsel,all</span><br><span class="line">solve</span><br></pre></td></tr></table></figure>
 
+<hr>
+<hr>
+<h1 id="单位及坐标系"><a href="#单位及坐标系" class="headerlink" title="单位及坐标系"></a>单位及坐标系</h1><h2 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h2><img src="/posts/Hexo\source\_posts\ANSYS-BASIC\12.png" alt="单位" style="zoom:67%;">
 
+<blockquote>
+<p>单位做到全局统一即可</p>
+</blockquote>
+<hr>
+<h2 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h2><h3 id="坐标系的分类"><a href="#坐标系的分类" class="headerlink" title="坐标系的分类"></a>坐标系的分类</h3><img src="/posts/Hexo\source\_posts\ANSYS-BASIC\13.png" alt="六大坐标系" style="zoom:75%;">
 
+<h3 id="全局坐标系-Global-CS"><a href="#全局坐标系-Global-CS" class="headerlink" title="全局坐标系(Global CS)"></a>全局坐标系(Global CS)</h3><p>简介：主要分为笛卡尔坐标系、柱坐标系和球柱坐标系，默认激活为笛卡尔坐标系</p>
+<p>相关命令：用于激活坐标系-(csys, num)，num&#x3D;0、1、2、5</p>
+<img src="/posts/Hexo\source\_posts\ANSYS-BASIC\14.png" alt="全局坐标系" style="zoom:75%;">
 
+<h3 id="工作平面坐标系-Working-Plane-CS"><a href="#工作平面坐标系-Working-Plane-CS" class="headerlink" title="工作平面坐标系(Working Plane CS)"></a>工作平面坐标系(Working Plane CS)</h3><p>简介：2-D作图平面，主要用于切割图元和基本图元（点线面）的定位和定向，仅能是笛卡尔坐标系，默认与全局坐标系的XOY平面重合</p>
+<p>相关命令：用于激活坐标系-(csys, 4)</p>
+<h3 id="局部坐标系-Local-CS"><a href="#局部坐标系-Local-CS" class="headerlink" title="局部坐标系(Local CS)"></a>局部坐标系(Local CS)</h3><p>简介：任意位置创建的坐标系，可以绕坐标轴旋转，类型可以是笛卡尔坐标系、柱坐标系和球柱坐标系</p>
+<p>相关命令：用于激活坐标系-(csys, num)，num&gt;&#x3D;10</p>
+<h3 id="节点坐标系"><a href="#节点坐标系" class="headerlink" title="节点坐标系"></a>节点坐标系</h3><p>简介：方便特定荷载的施加，默认平行于当前激活的坐标系</p>
+<p>相关命令：Nrotat</p>
+<h3 id="结果坐标系"><a href="#结果坐标系" class="headerlink" title="结果坐标系"></a>结果坐标系</h3><p>简介：所有的后处理都在此坐标系下，默认下，软件会将所有结果旋转到全局直角坐标系</p>
+<hr>
+<hr>
+<h1 id="关键点、线、面和体的生成"><a href="#关键点、线、面和体的生成" class="headerlink" title="关键点、线、面和体的生成"></a>关键点、线、面和体的生成</h1><h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints</p>
+<p>命令流：K、Kdist、KX、KY、KZ</p>
+<h3 id="kdist-计算两个关键点距离"><a href="#kdist-计算两个关键点距离" class="headerlink" title="kdist(计算两个关键点距离)"></a>kdist(计算两个关键点距离)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Check Geom&gt;KP distances</p>
+<p>Description : KDIST, KP1, KP2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kdist,1,2</span><br></pre></td></tr></table></figure>
+
+<h3 id="KX、KY、KZ-获取某一关键点的分坐标"><a href="#KX、KY、KZ-获取某一关键点的分坐标" class="headerlink" title="KX、KY、KZ(获取某一关键点的分坐标)"></a>KX、KY、KZ(获取某一关键点的分坐标)</h3><p>Description : x &#x3D; kx(kpnum)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = kx(1) !获取1号关键点的x坐标值</span><br></pre></td></tr></table></figure>
+
+<h3 id="status-补充"><a href="#status-补充" class="headerlink" title="*status(补充)"></a>*status(补充)</h3><p>GUI : Utility Menu&gt;List&gt;Status&gt;Parameters</p>
+<p>Description : Specifies the parameter or sets of parameters listed.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*status a  !会不断获取有关于变量a的内容，具体包括：name，value，type，dimension</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="线"><a href="#线" class="headerlink" title="线"></a>线</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines</p>
+<p>命令流：L（已述）、Larc、Lstr、CSWPLA（了解）</p>
+<h3 id="Larc-定义一个圆"><a href="#Larc-定义一个圆" class="headerlink" title="Larc(定义一个圆)"></a>Larc(定义一个圆)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Arcs</p>
+<p>Description : LARC, P1, P2, PC, RAD</p>
+<table>
+<thead>
+<tr>
+<th align="center">LARC</th>
+<th align="center">P1</th>
+<th align="center">P2</th>
+<th align="center">PC</th>
+<th align="center">RAD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Keypoint at one end of circular arc line.</td>
+<td align="center">Keypoint at other end of circular arc line.</td>
+<td align="center">Keypoint defining plane of arc and center of curvature side.</td>
+<td align="center">Radius of curvature of the arc. If negative, assume center of curvature side is opposite to that defined by PC. If RAD is blank, RAD will be calculated from a curve fit through P1, PC, and P2.</td>
+</tr>
+</tbody></table>
+<h3 id="Lstr-定义一条直线"><a href="#Lstr-定义一条直线" class="headerlink" title="Lstr(定义一条直线)"></a>Lstr(定义一条直线)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;Straight Line</p>
+<p>Description : LSTR, P1, P2</p>
+<h3 id="CSWPLA-定义一个局部坐标系-常用于椭圆等的建立"><a href="#CSWPLA-定义一个局部坐标系-常用于椭圆等的建立" class="headerlink" title="CSWPLA(定义一个局部坐标系-常用于椭圆等的建立)"></a>CSWPLA(定义一个局部坐标系-常用于椭圆等的建立)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;Straight Line</p>
+<p>Description : CSWPLA, KCN, KCS, PAR1, PAR2</p>
+<table>
+<thead>
+<tr>
+<th align="center">CSWPLA</th>
+<th align="center">KCN</th>
+<th align="center">KCS</th>
+<th align="center">PAR1</th>
+<th align="center">PAR2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Arbitrary reference number assigned to this coordinate system. Must be greater than 10</td>
+<td align="center">Coordinate system type</td>
+<td align="center">Used for elliptical, spheroidal, or toroidal systems.</td>
+<td align="center">Used for spheroidal systems.</td>
+</tr>
+</tbody></table>
+<h3 id="Circle-定义一个圆"><a href="#Circle-定义一个圆" class="headerlink" title="Circle(定义一个圆)"></a>Circle(定义一个圆)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Arcs</p>
+<p>Description : CIRCLE, PCENT, RAD, PAXIS, PZERO, ARC, NSEG</p>
+<hr>
+<h2 id="面"><a href="#面" class="headerlink" title="面"></a>面</h2><hr>
+<h2 id="体"><a href="#体" class="headerlink" title="体"></a>体</h2>
         </div>
 
         
