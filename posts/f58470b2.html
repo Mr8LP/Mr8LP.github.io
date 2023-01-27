@@ -458,7 +458,9 @@
 <h3 id="工作平面坐标系-Working-Plane-CS"><a href="#工作平面坐标系-Working-Plane-CS" class="headerlink" title="工作平面坐标系(Working Plane CS)"></a>工作平面坐标系(Working Plane CS)</h3><p>简介：2-D作图平面，主要用于切割图元和基本图元（点线面）的定位和定向，仅能是笛卡尔坐标系，默认与全局坐标系的XOY平面重合</p>
 <p>相关命令：用于激活坐标系-(csys, 4)</p>
 <h3 id="局部坐标系-Local-CS"><a href="#局部坐标系-Local-CS" class="headerlink" title="局部坐标系(Local CS)"></a>局部坐标系(Local CS)</h3><p>简介：任意位置创建的坐标系，可以绕坐标轴旋转，类型可以是笛卡尔坐标系、柱坐标系和球柱坐标系</p>
-<p>相关命令：用于激活坐标系-(csys, num)，num&gt;&#x3D;10</p>
+<p>相关命令：用于激活坐标系-(csys, num)，num&gt;&#x3D;10，local</p>
+<h4 id="LOCAL-通过位置和方向定义局部坐标系"><a href="#LOCAL-通过位置和方向定义局部坐标系" class="headerlink" title="LOCAL(通过位置和方向定义局部坐标系)"></a>LOCAL(通过位置和方向定义局部坐标系)</h4><p>GUI : Utility Menu&gt;WorkPlane&gt;Local Coordinate Systems&gt;Create Local CS&gt;At Specified Loc</p>
+<p>Description : LOCAL, KCN, KCS, XC, YC, ZC, THXY, THYZ, THZX, PAR1, PAR2</p>
 <h3 id="节点坐标系"><a href="#节点坐标系" class="headerlink" title="节点坐标系"></a>节点坐标系</h3><p>简介：方便特定荷载的施加，默认平行于当前激活的坐标系</p>
 <p>相关命令：Nrotat</p>
 <h3 id="结果坐标系"><a href="#结果坐标系" class="headerlink" title="结果坐标系"></a>结果坐标系</h3><p>简介：所有的后处理都在此坐标系下，默认下，软件会将所有结果旋转到全局直角坐标系</p>
@@ -500,8 +502,12 @@
 <td align="center">Radius of curvature of the arc. If negative, assume center of curvature side is opposite to that defined by PC. If RAD is blank, RAD will be calculated from a curve fit through P1, PC, and P2.</td>
 </tr>
 </tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">larc,2,3,1,2000</span><br></pre></td></tr></table></figure>
+
 <h3 id="Lstr-定义一条直线"><a href="#Lstr-定义一条直线" class="headerlink" title="Lstr(定义一条直线)"></a>Lstr(定义一条直线)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;Straight Line</p>
 <p>Description : LSTR, P1, P2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lstr,1,2</span><br></pre></td></tr></table></figure>
+
 <h3 id="CSWPLA-定义一个局部坐标系-常用于椭圆等的建立"><a href="#CSWPLA-定义一个局部坐标系-常用于椭圆等的建立" class="headerlink" title="CSWPLA(定义一个局部坐标系-常用于椭圆等的建立)"></a>CSWPLA(定义一个局部坐标系-常用于椭圆等的建立)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Lines&gt;Straight Line</p>
 <p>Description : CSWPLA, KCN, KCS, PAR1, PAR2</p>
 <table>
@@ -522,11 +528,312 @@
 <td align="center">Used for spheroidal systems.</td>
 </tr>
 </tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">finish</span><br><span class="line">/clear</span><br><span class="line">/prep7</span><br><span class="line">cswpla,11,1,0.5,1</span><br><span class="line">k,1,-1000,0,0</span><br><span class="line">k,2,1000,0,0</span><br><span class="line">l,1,2</span><br></pre></td></tr></table></figure>
+
 <h3 id="Circle-定义一个圆"><a href="#Circle-定义一个圆" class="headerlink" title="Circle(定义一个圆)"></a>Circle(定义一个圆)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Arcs</p>
 <p>Description : CIRCLE, PCENT, RAD, PAXIS, PZERO, ARC, NSEG</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">circle,1,1000 !中心点为1号关键点的半径为1000的圆</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h2 id="面"><a href="#面" class="headerlink" title="面"></a>面</h2><hr>
-<h2 id="体"><a href="#体" class="headerlink" title="体"></a>体</h2>
+<h2 id="面"><a href="#面" class="headerlink" title="面"></a>面</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas</p>
+<p>命令流：A、AL、BLC4、BLC5、CYL4、CYL5</p>
+<h3 id="A-连接任意点形成一个面"><a href="#A-连接任意点形成一个面" class="headerlink" title="A(连接任意点形成一个面)"></a>A(连接任意点形成一个面)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Arbitrary&gt;Through KPs</p>
+<p>Description : A, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">P1-18</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of keypoints defining the area</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A,1,2,3</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：连接线的类型要视坐标系类型而变</p>
+</blockquote>
+<h3 id="AL-连接任意点形成一个面"><a href="#AL-连接任意点形成一个面" class="headerlink" title="AL(连接任意点形成一个面)"></a>AL(连接任意点形成一个面)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Arbitrary&gt;By Lines</p>
+<p>Description : A, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">P1-18</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of keypoints defining the area</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A,1,2,3</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：连接线的类型仅能是直线</p>
+</blockquote>
+<h3 id="BLC4-利用边界点形成长方形块"><a href="#BLC4-利用边界点形成长方形块" class="headerlink" title="BLC4(利用边界点形成长方形块)"></a>BLC4(利用边界点形成长方形块)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Rectangle&gt;By 2 Corners</p>
+<p>Description : BLC4, XCORNER, YCORNER, WIDTH, HEIGHT, DEPTH</p>
+<table>
+<thead>
+<tr>
+<th align="center">BLC4</th>
+<th align="center">X，YCORNER</th>
+<th align="center">WIDTH</th>
+<th align="center">HEIGHT</th>
+<th align="center">DEPTH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Working plane X and Y coordinates of one corner of the rectangle or block face.</td>
+<td align="center">&#x2F;</td>
+<td align="center">&#x2F;</td>
+<td align="center">&#x2F;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blc4,0,0,1000,2000,1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="BLC5-利用中心点形成长方形块"><a href="#BLC5-利用中心点形成长方形块" class="headerlink" title="BLC5(利用中心点形成长方形块)"></a>BLC5(利用中心点形成长方形块)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Rectangle&gt;By Centr &amp; Cornr</p>
+<p>Description : BLC5, XCENTER, YCENTER, WIDTH, HEIGHT, DEPTH</p>
+<table>
+<thead>
+<tr>
+<th align="center">BLC4</th>
+<th align="center">X，YCORNER</th>
+<th align="center">WIDTH</th>
+<th align="center">HEIGHT</th>
+<th align="center">DEPTH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Working plane X and Y coordinates of one corner of the rectangle or block face.</td>
+<td align="center">&#x2F;</td>
+<td align="center">&#x2F;</td>
+<td align="center">&#x2F;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blc4,0,0,1000,1000,1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="CYL4-自定义任意角度的圆块、圆环块"><a href="#CYL4-自定义任意角度的圆块、圆环块" class="headerlink" title="CYL4(自定义任意角度的圆块、圆环块)"></a>CYL4(自定义任意角度的圆块、圆环块)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Rectangle&gt;By Centr &amp; Cornr</p>
+<p>Description : CYL4, XCENTER, YCENTER, RAD1, THETA1, RAD2, THETA2, DEPTH</p>
+<table>
+<thead>
+<tr>
+<th align="center">CYL4</th>
+<th align="center">X,YCENTER</th>
+<th align="center">RAD1、2</th>
+<th align="center">THETA1、2</th>
+<th align="center">DEPTH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Working plane X and Y coordinates of the center of the circle or cylinder.</td>
+<td align="center">Inner and outer radii (either order) of the circle or cylinder.</td>
+<td align="center">Starting and ending angles (either order) of the circle or faces of the cylinder.The starting angle defaults to 0° and the ending angle defaults to 360°.</td>
+<td align="center">&#x2F;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyl4,0,0,1000,0,2000,180,1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="CYL5-定义两点创建圆块"><a href="#CYL5-定义两点创建圆块" class="headerlink" title="CYL5(定义两点创建圆块)"></a>CYL5(定义两点创建圆块)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Circle&gt;By End Points</p>
+<p>Description : CYL5, XEDGE1, YEDGE1, XEDGE2, YEDGE2, DEPTH</p>
+<table>
+<thead>
+<tr>
+<th align="center">CYL5</th>
+<th align="center">XEDGE1, YEDGE1</th>
+<th align="center">XEDGE2, YEDGE2</th>
+<th align="center">DEPTH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Working plane X and Y coordinates of one end of the circle or cylinder face.</td>
+<td align="center">Working plane X and Y coordinates of the other end of the circle or cylinder face.</td>
+<td align="center">&#x2F;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyl5,0,0,1000,1000,1000</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="体"><a href="#体" class="headerlink" title="体"></a>体</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Volumes</p>
+<p>命令流 : V, VA, BLC4（已述）, BLC5（已述）, CYL4（已述）, ADRAG, VDRAG</p>
+<h3 id="V-通过关键点建立体"><a href="#V-通过关键点建立体" class="headerlink" title="V(通过关键点建立体)"></a>V(通过关键点建立体)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Volumes&gt;Arbitrary&gt;Through KPs</p>
+<p>Description : V, P1, P2, P3, P4, P5, P6, P7, P8</p>
+<table>
+<thead>
+<tr>
+<th align="center">V</th>
+<th align="center">P1-P8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Keypoint defining corner of volume</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>关键点的选择顺序会影响模型</p>
+</blockquote>
+<h3 id="VA-通过关键点建立体"><a href="#VA-通过关键点建立体" class="headerlink" title="VA(通过关键点建立体)"></a>VA(通过关键点建立体)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Volumes&gt;Arbitrary&gt;By Areas</p>
+<p>Description : VA, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10</p>
+<table>
+<thead>
+<tr>
+<th align="center">VA</th>
+<th align="center">A1-A10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of areas defining volume.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>面的选择顺序会影响模型</p>
+</blockquote>
+<h3 id="ADRAG-扫描拉伸"><a href="#ADRAG-扫描拉伸" class="headerlink" title="ADRAG(扫描拉伸)"></a>ADRAG(扫描拉伸)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Extrude&gt;Lines&gt;Along Lines</p>
+<p>Description : ADRAG, NL1, NL2, NL3, NL4, NL5, NL6, NLP1, NLP2, NLP3, NLP4, NLP5, NLP6</p>
+<table>
+<thead>
+<tr>
+<th align="center">ADRG</th>
+<th align="center">NL1-NL6</th>
+<th align="center">NLP1-NLP6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of lines in the pattern to be dragged (6 maximum if using keyboard entry).</td>
+<td align="center">List of lines defining the path along which the pattern is to be dragged (6 maximum if using keyboard entry). Must be a continuous set of lines.</td>
+</tr>
+</tbody></table>
+<h3 id="VDRAG-扫描拉伸"><a href="#VDRAG-扫描拉伸" class="headerlink" title="VDRAG(扫描拉伸)"></a>VDRAG(扫描拉伸)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Extrude&gt;Areas&gt;Along Lines</p>
+<p>Description : VDRAG, NA1, NA2, NA3, NA4, NA5, NA6, NLP1, NLP2, NLP3, NLP4, NLP5, NLP6</p>
+<table>
+<thead>
+<tr>
+<th align="center">ADRG</th>
+<th align="center">NA1-NA6</th>
+<th align="center">NLP1-NLP6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of areas in the pattern to be dragged (6 maximum if using keyboard entry).</td>
+<td align="center">List of lines defining the path along which the pattern is to be dragged (6 maximum if using keyboard entry). Must be a continuous set of lines.</td>
+</tr>
+</tbody></table>
+<hr>
+<hr>
+<h1 id="选择集命令的使用"><a href="#选择集命令的使用" class="headerlink" title="选择集命令的使用"></a>选择集命令的使用</h1><p>GUI : Utility Menu&gt;Select&gt;Entities</p>
+<p>命令流 : Ksel, Lsel, Asel, Vsel, Nsel, Esel, *do, *enddo (以Lsel为例)</p>
+<h2 id="Lsel-直线选择命令"><a href="#Lsel-直线选择命令" class="headerlink" title="Lsel(直线选择命令)"></a>Lsel(直线选择命令)</h2><p>GUI : Utility Menu&gt;Select&gt;Entities</p>
+<p>Description : LSEL, Type, Item, Comp, VMIN, VMAX, VINC, KSWP</p>
+<h3 id="操作对象："><a href="#操作对象：" class="headerlink" title="操作对象："></a>操作对象：</h3><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230127143715843.png" alt="image-20230127143715843" style="zoom:67%;">
+
+<h3 id="任务描述："><a href="#任务描述：" class="headerlink" title="任务描述："></a>任务描述：</h3><h4 id="1-选择-L2-L4-L6"><a href="#1-选择-L2-L4-L6" class="headerlink" title="1.选择 L2, L4, L6"></a>1.选择 L2, L4, L6</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsel,s,line,,2,6,2,1</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-利用location继续选择L3"><a href="#2-利用location继续选择L3" class="headerlink" title="2.利用location继续选择L3"></a>2.利用location继续选择L3</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsel,a,loc,y,2,2,0,0</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-利用-do和-enddo选择L6"><a href="#3-利用-do和-enddo选择L6" class="headerlink" title="3.利用 *do和 *enddo选择L6"></a>3.利用 *do和 *enddo选择L6</h4><h5 id="do"><a href="#do" class="headerlink" title="* do"></a>* do</h5><p>GUI : This command cannot be accessed from a menu.</p>
+<p>Description : *DO, Par, IVAL, FVAL, INC</p>
+<table>
+<thead>
+<tr>
+<th align="center">*DO</th>
+<th align="center">Par</th>
+<th align="center">IVAL, FVAL, INC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">The name of the scalar parameter to be used as the loop index.</td>
+<td align="center">Initially assign IVAL to Par. Increment IVAL by INC for each successive loop.</td>
+</tr>
+</tbody></table>
+<h5 id="enddo"><a href="#enddo" class="headerlink" title="*enddo"></a>*enddo</h5><p>GUI : This command cannot be accessed from a menu.</p>
+<p>Description : One *ENDDO is required for each nested do-loop. The *ENDDO command must appear on the same file as the *DO command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*do,i,1,1,0</span><br><span class="line">lsel,s,loc,y,1*i</span><br><span class="line">*enddo</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h1 id="基本图元的修改"><a href="#基本图元的修改" class="headerlink" title="基本图元的修改"></a>基本图元的修改</h1><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling</p>
+<p>命令流 : Kdele, Ldele, Adele, Vdele, Kgen, Lgen, Vgen, Lsymm, Vsymm</p>
+<h2 id="Ldele-删除未网格化的线条"><a href="#Ldele-删除未网格化的线条" class="headerlink" title="Ldele(删除未网格化的线条)"></a>Ldele(删除未网格化的线条)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Concatenate&gt;Del Concats&gt;Lines</p>
+<p>Description : LDELE, NL1, NL2, NINC, KSWP</p>
+<table>
+<thead>
+<tr>
+<th align="center">LDELE</th>
+<th align="center">NL1, NL2, NINC</th>
+<th align="center">KSWP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Delete lines from NL1 to NL2 (defaults to NL1) in steps of NINC (defaults to 1)&#x2F; All</td>
+<td align="center">Specifies whether keypoints are also to be deleted: if KSWP&#x3D;0, Delete lines only, but if KSWP&#x3D;1, Delete lines, as well as keypoints attached to lines but not attached to other lines.</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ldele,1,6,1,0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lgen-复制-x2F-移动、旋转已知线"><a href="#Lgen-复制-x2F-移动、旋转已知线" class="headerlink" title="Lgen(复制&#x2F;移动、旋转已知线)"></a>Lgen(复制&#x2F;移动、旋转已知线)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Copy&gt;Lines</p>
+<p>Description : LGEN, ITIME, NL1, NL2, NINC, DX, DY, DZ, KINC, NOELEM, IMOVE</p>
+<table>
+<thead>
+<tr>
+<th align="center">LGEN</th>
+<th align="center">ITIME (&gt;&#x3D;1)</th>
+<th align="center">NL1, NL2, NINC</th>
+<th align="center">DX, DY, DZ</th>
+<th align="center">KINC</th>
+<th align="center">NOELEM</th>
+<th>IMOVE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Do this generation operation a total of ITIMEs, incrementing all keypoints in the given pattern automatically (or by KINC) each time after the first.</td>
+<td align="center">Generate lines from pattern beginning with NL1 to NL2 (defaults to NL1) in steps of NINC (defaults to 1) &#x2F;All</td>
+<td align="center">Keypoint location increments in the active coordinate system</td>
+<td align="center">Keypoint increment between generated sets. If zero, the lowest available keypoint numbers are assigned</td>
+<td align="center">Specifies if elements and nodes are also to be generated (0&#x2F;1)</td>
+<td>Specifies whether to redefine the existing lines (0&#x2F;1), if IMOVE &#x3D; 1, ITIME, KINC, and NOELM are ignored</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>命令具体是移动还是旋转要视激活的坐标系类型而定，如果激活的是笛卡尔坐标系，那就是移动操作；如果激活的是柱坐标系，那就是旋转操作。</p>
+</blockquote>
+<h2 id="Lsymm-直线镜像"><a href="#Lsymm-直线镜像" class="headerlink" title="Lsymm(直线镜像)"></a>Lsymm(直线镜像)</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Reflect&gt;Lines</p>
+<p>Description : LSYMM, Ncomp, NL1, NL2, NINC, KINC, NOELEM, IMOVE</p>
+<table>
+<thead>
+<tr>
+<th align="center">LSYMML</th>
+<th align="center">Ncomp</th>
+<th align="center">NL1, NL2, NINC</th>
+<th align="center">KINC</th>
+<th align="center">NOELEM</th>
+<th>IMOVE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Symmetry key: X&#x2F;Y&#x2F;Z</td>
+<td align="center">Generate lines from pattern beginning with NL1 to NL2 (defaults to NL1) in steps of NINC (defaults to 1) &#x2F;All</td>
+<td align="center">Keypoint increment between generated sets. If zero, the lowest available keypoint numbers are assigned</td>
+<td align="center">Specifies if elements and nodes are also to be generated (0&#x2F;1)</td>
+<td>Specifies whether to redefine the existing lines (0&#x2F;1), if IMOVE &#x3D; 1, ITIME, KINC, and NOELM are ignored</td>
+</tr>
+</tbody></table>
+
         </div>
 
         
