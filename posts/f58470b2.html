@@ -456,7 +456,21 @@
 <img src="/posts/Hexo\source\_posts\ANSYS-BASIC\14.png" alt="全局坐标系" style="zoom:75%;">
 
 <h3 id="工作平面坐标系-Working-Plane-CS"><a href="#工作平面坐标系-Working-Plane-CS" class="headerlink" title="工作平面坐标系(Working Plane CS)"></a>工作平面坐标系(Working Plane CS)</h3><p>简介：2-D作图平面，主要用于切割图元和基本图元（点线面）的定位和定向，仅能是笛卡尔坐标系，默认与全局坐标系的XOY平面重合</p>
-<p>相关命令：用于激活坐标系-(csys, 4)</p>
+<p>相关命令：用于激活坐标系-(csys, 4), WPOFFS</p>
+<h4 id="WPOFFS-平移工作平面"><a href="#WPOFFS-平移工作平面" class="headerlink" title="WPOFFS(平移工作平面)"></a>WPOFFS(平移工作平面)</h4><p>GUI : Utility Menu&gt;WorkPlane&gt;Offset WP by Increments</p>
+<p>Description : WPOFFS, XOFF, YOFF, ZOFF</p>
+<table>
+<thead>
+<tr>
+<th align="center">WPOFFS</th>
+<th align="center">XOFF, YOFF, ZOFF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Offset increments defined in the working plane coordinate system. If only ZOFF is used, the working plane will be redefined parallel to the present plane and offset by ZOFF.</td>
+</tr>
+</tbody></table>
 <h3 id="局部坐标系-Local-CS"><a href="#局部坐标系-Local-CS" class="headerlink" title="局部坐标系(Local CS)"></a>局部坐标系(Local CS)</h3><p>简介：任意位置创建的坐标系，可以绕坐标轴旋转，类型可以是笛卡尔坐标系、柱坐标系和球柱坐标系</p>
 <p>相关命令：用于激活坐标系-(csys, num)，num&gt;&#x3D;10，local</p>
 <h4 id="LOCAL-通过位置和方向定义局部坐标系"><a href="#LOCAL-通过位置和方向定义局部坐标系" class="headerlink" title="LOCAL(通过位置和方向定义局部坐标系)"></a>LOCAL(通过位置和方向定义局部坐标系)</h4><p>GUI : Utility Menu&gt;WorkPlane&gt;Local Coordinate Systems&gt;Create Local CS&gt;At Specified Loc</p>
@@ -536,7 +550,7 @@
 
 <hr>
 <h2 id="面"><a href="#面" class="headerlink" title="面"></a>面</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas</p>
-<p>命令流：A、AL、BLC4、BLC5、CYL4、CYL5</p>
+<p>命令流：A、AL、BLC4、BLC5、CYL4、CYL5，SPH4</p>
 <h3 id="A-连接任意点形成一个面"><a href="#A-连接任意点形成一个面" class="headerlink" title="A(连接任意点形成一个面)"></a>A(连接任意点形成一个面)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas&gt;Arbitrary&gt;Through KPs</p>
 <p>Description : A, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16, P17, P18</p>
 <table>
@@ -661,6 +675,22 @@
 </tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyl5,0,0,1000,1000,1000</span><br></pre></td></tr></table></figure>
 
+<h3 id="SPH4-定义球体"><a href="#SPH4-定义球体" class="headerlink" title="SPH4(定义球体)"></a>SPH4(定义球体)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Volumes&gt;Sphere</p>
+<p>Description : SPH4, XCENTER, YCENTER, RAD1, RAD2</p>
+<table>
+<thead>
+<tr>
+<th align="center">SPH4</th>
+<th align="center">XCENTER, YCENTER</th>
+<th align="center">RAD1, RAD2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Working plane X and Y coordinates of the center of the sphere.</td>
+<td align="center">Inner and outer radii (either order) of the sphere. A value of zero or blank for either RAD1 or RAD2 defines a solid sphere.</td>
+</tr>
+</tbody></table>
 <hr>
 <h2 id="体"><a href="#体" class="headerlink" title="体"></a>体</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Volumes</p>
 <p>命令流 : V, VA, BLC4（已述）, BLC5（已述）, CYL4（已述）, ADRAG, VDRAG</p>
@@ -833,6 +863,152 @@
 <td>Specifies whether to redefine the existing lines (0&#x2F;1), if IMOVE &#x3D; 1, ITIME, KINC, and NOELM are ignored</td>
 </tr>
 </tbody></table>
+<hr>
+<hr>
+<h1 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h1><p>运算类型：相加（ADD），相减（DIVIDE），粘结（GLUE），搭接（OVERLAP），切割（PARTITION）</p>
+<p>运算作用：对各个集合元素进行组装，为后续网格划分做几何准备</p>
+<h2 id="相加操作"><a href="#相加操作" class="headerlink" title="相加操作"></a>相加操作</h2><p>运算作用：由多个几何图素生成一个几何图素，而且该图素是一整体即没有“接缝”（内部的低级图素被删除）</p>
+<p>GUI : Main Menu-Preprocessor-modeling-modeling-operate-Booleans-ADD</p>
+<p>命令流：LCOMB，AADD，VADD</p>
+<blockquote>
+<p>注意事项：加运算仅限于同级几何元素（点-点，线-线，体-体），而且相交部分最好与母体同级，但在低于母体一级时也可作不完全加运算（部分加法操作作用在于把重合位置处多余的几何元素删除，以保留一个），。</p>
+</blockquote>
+<h3 id="LCOMB-线相加"><a href="#LCOMB-线相加" class="headerlink" title="LCOMB(线相加)"></a>LCOMB(线相加)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Add&gt;Lines</p>
+<p>Description : LCOMB, NL1, NL2, KEEP</p>
+<table>
+<thead>
+<tr>
+<th align="center">LCOMB</th>
+<th align="center">NL1</th>
+<th align="center">NL2</th>
+<th align="center">KEEP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Number of the first line to be combined &#x2F; ALL</td>
+<td align="center">Number of the second line to be combined</td>
+<td align="center">Specifies whether to keep the input entities (0&#x2F;1)</td>
+</tr>
+</tbody></table>
+<h3 id="AADD-面相加"><a href="#AADD-面相加" class="headerlink" title="AADD(面相加)"></a>AADD(面相加)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Add&gt;Areas</p>
+<p>Description : AADD, NA1, NA2, NA3, NA4, NA5, NA6, NA7, NA8, NA9</p>
+<table>
+<thead>
+<tr>
+<th align="center">AADD</th>
+<th align="center">NA1</th>
+<th align="center">NA2-NA9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Numbers of areas to be added. If NA1 &#x3D; ALL, add all selected areas and ignore NA2 to NA9.</td>
+<td align="center">Numbers of areas to be added.</td>
+</tr>
+</tbody></table>
+<h3 id="VADD-体相加"><a href="#VADD-体相加" class="headerlink" title="VADD(体相加)"></a>VADD(体相加)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Add&gt;Volumes</p>
+<p>Description : VADD, NV1, NV2, NV3, NV4, NV5, NV6, NV7, NV8, NV9</p>
+<table>
+<thead>
+<tr>
+<th align="center">VADD</th>
+<th align="center">NV1</th>
+<th align="center">NV2-NV9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Numbers of volumes to be added. If NV1 &#x3D; ALL, add all selected Volumes and ignore NV2 to NV9.</td>
+<td align="center">Numbers of Volumes to be added.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="相减操作"><a href="#相减操作" class="headerlink" title="相减操作"></a>相减操作</h2><p>运算作用：“删除”母体中一个或多个与子体重合的图素；减运算可在不同级图素间进行。减运算结果的最高图素与母体图素相同。</p>
+<p>GUI : Main Menu-Preprocessor-modeling-modeling-operate-Booleans- subtract</p>
+<p>命令流：LSBL，ASBA，VSBV，LSBA，LSBV，ASBL，ASBV，VSBA</p>
+<p>命令流基本格式：LSBL, NL1, NL2,SEPO, KEEP1,KEEP2</p>
+<blockquote>
+<p>注意事项：从命令中区分减与被减的小技巧，SB (Subtract) 前为被减图素，SB后为减图素。</p>
+</blockquote>
+<p>两种类型：同级相减，异级相减</p>
+<h3 id="同级相减"><a href="#同级相减" class="headerlink" title="同级相减"></a>同级相减</h3><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128133459188.png" alt="image-20230128133459188" style="zoom:80%;">
+
+<h3 id="异级相减"><a href="#异级相减" class="headerlink" title="异级相减"></a>异级相减</h3><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128133715265.png" alt="image-20230128133715265" style="zoom:150%;">
+
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128133820301.png" alt="image-20230128133820301"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128133837179.png" alt="image-20230128133837179"></p>
+<h3 id="LSBL-线减线"><a href="#LSBL-线减线" class="headerlink" title="LSBL(线减线)"></a>LSBL(线减线)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Divide&gt;Line by Line</p>
+<p>Description : LSBL, NL1, NL2, SEPO, KEEP1, KEEP2</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128222053172.png" alt="image-20230128222053172"></p>
+<hr>
+<h2 id="粘结"><a href="#粘结" class="headerlink" title="粘结"></a>粘结</h2><p>运算作用：将多个同级元素粘在一起，在其接触的地方具有共享边界。</p>
+<p>GUI : Main Menu-Preprocessor-modeling-modeling-operate-Booleans-Glue</p>
+<p>命令流：LGlue，AGlue，VGlue</p>
+<blockquote>
+<p>注意事项：参与运算的元素不能有与母体同级的相交元素；元素运算后母体不变，但边界共享。</p>
+</blockquote>
+<h3 id="Lglue"><a href="#Lglue" class="headerlink" title="Lglue"></a>Lglue</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Glue&gt;Lines</p>
+<p>Description : LGLUE, NL1, NL2, NL3, NL4, NL5, NL6, NL7, NL8, NL9</p>
+<table>
+<thead>
+<tr>
+<th align="center">LGLUE</th>
+<th align="center">NL1-NL9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Numbers of the lines to be glued&#x2F;ALL</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="搭接"><a href="#搭接" class="headerlink" title="搭接"></a>搭接</h2><p>运算作用：在多个同级元素搭接区域生成多个共同的边界。</p>
+<p>GUI : Main Menu-Preprocessor-modeling-modeling-operate-Booleans-Overlap</p>
+<p>命令流：Loverlap，Aoverlap，Voverlap</p>
+<blockquote>
+<p>注意事项：相交部分要与母体同级。</p>
+</blockquote>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230128225204465.png" alt="image-20230128225204465"></p>
+<h3 id="Loverlap"><a href="#Loverlap" class="headerlink" title="Loverlap"></a>Loverlap</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Overlap&gt;Lines</p>
+<p>Description : LOVLAP, NL1, NL2, NL3, NL4, NL5, NL6, NL7, NL8, NL9</p>
+<table>
+<thead>
+<tr>
+<th align="center">Loverlap</th>
+<th align="center">NL1-NL9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Numbers of lines to be overlapped&#x2F;ALL</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="工作平面切割"><a href="#工作平面切割" class="headerlink" title="工作平面切割"></a>工作平面切割</h2><p>运算作用：采用工作平面进行布尔减操作。</p>
+<p>GUI : Main Menu-Preprocessor-modeling-modeling-operate-Booleans-Divide</p>
+<p>命令流：Lsbw，Asbw，Vsbw，Wprota，Wpoffs，Wpcsys</p>
+<blockquote>
+<p>注意事项：相交部分要与母体同级。</p>
+</blockquote>
+<h3 id="Lsbw-利用工作平面剪切线"><a href="#Lsbw-利用工作平面剪切线" class="headerlink" title="Lsbw(利用工作平面剪切线)"></a>Lsbw(利用工作平面剪切线)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Booleans&gt;Divide&gt;Line by WrkPlane</p>
+<p>Description : LSBW, NL, SEPO, KEEP</p>
+<blockquote>
+<p>注意事项：只有XOY工作平面才能用于切割几何元素，因此切割前需要进行预旋转和平移操作。</p>
+</blockquote>
+<h3 id="Wprota-工作平面旋转"><a href="#Wprota-工作平面旋转" class="headerlink" title="Wprota(工作平面旋转)"></a>Wprota(工作平面旋转)</h3><p>GUI : Utility Menu&gt;WorkPlane&gt;Offset WP by Increments</p>
+<p>Description : WPROTA, THXY, THYZ, THZX</p>
+<h3 id="Wpoffs-工作平面旋转"><a href="#Wpoffs-工作平面旋转" class="headerlink" title="Wpoffs(工作平面旋转)"></a>Wpoffs(工作平面旋转)</h3><p>GUI : Utility Menu&gt;WorkPlane&gt;Offset WP by Increments</p>
+<p>Description : WPOFFS, XOFF, YOFF, ZOFF</p>
+<h3 id="Wpcsys-移动工作平面原点至当前激活坐标系原点"><a href="#Wpcsys-移动工作平面原点至当前激活坐标系原点" class="headerlink" title="Wpcsys(移动工作平面原点至当前激活坐标系原点)"></a>Wpcsys(移动工作平面原点至当前激活坐标系原点)</h3><p>GUI : Utility Menu&gt;WorkPlane&gt;Align WP with&gt;Active Coord Sys</p>
+<p>Description : WPCSYS, -1</p>
+<blockquote>
+<p>注意事项：在使用此命令之前，要确保当前激活的坐标系不是4号坐标系（工作平面坐标系），因此通常与(CSYS,0)连用</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">csys,0</span><br><span class="line">wpcsys,-1</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充-利用循环命令进行切割"><a href="#补充-利用循环命令进行切割" class="headerlink" title="补充-利用循环命令进行切割"></a>补充-利用循环命令进行切割</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*do,i,1,5,1    !循环切割5次</span><br><span class="line">wpoffs,,30     !柱坐标系下，每次切割完旋转30度</span><br><span class="line">asbw,all       !执行坐标系切割命令</span><br><span class="line">*enddo         !结束循环</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
