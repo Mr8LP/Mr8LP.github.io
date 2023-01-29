@@ -548,6 +548,44 @@
 <p>Description : CIRCLE, PCENT, RAD, PAXIS, PZERO, ARC, NSEG</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">circle,1,1000 !中心点为1号关键点的半径为1000的圆</span><br></pre></td></tr></table></figure>
 
+<h3 id="LFILLT-定义一个直线圆角"><a href="#LFILLT-定义一个直线圆角" class="headerlink" title="LFILLT(定义一个直线圆角)"></a>LFILLT(定义一个直线圆角)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Lines&gt;Line Fillet</p>
+<p>Description : LFILLT, NL1, NL2, RAD, PCENT</p>
+<table>
+<thead>
+<tr>
+<th align="center">LFILLT</th>
+<th align="center">NL1</th>
+<th align="center">NL2</th>
+<th align="center">RAD</th>
+<th align="center">PCENT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Number of the first intersecting line</td>
+<td align="center">Number of the second intersecting line</td>
+<td align="center">Radius of fillet to be generated</td>
+<td align="center">Number to be assigned to generated keypoint at fillet arc center. If zero (or blank), no keypoint is generated</td>
+</tr>
+</tbody></table>
+<h3 id="KL-在已有线上形成一个关键点"><a href="#KL-在已有线上形成一个关键点" class="headerlink" title="KL(在已有线上形成一个关键点)"></a>KL(在已有线上形成一个关键点)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Keypoints&gt;On Line</p>
+<p>Description : KL, NL1, RATIO, NK1</p>
+<table>
+<thead>
+<tr>
+<th align="center">KL</th>
+<th align="center">NL1</th>
+<th align="center">RATIO</th>
+<th align="center">NK1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Number of the line</td>
+<td align="center">Ratio of line length to locate keypoint. Must be between 0.0 and 1.0. Defaults to 0.5 (divide the line in half).</td>
+<td align="center">Number to be assigned to keypoint generated at division location (defaults to lowest available keypoint number</td>
+</tr>
+</tbody></table>
 <hr>
 <h2 id="面"><a href="#面" class="headerlink" title="面"></a>面</h2><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Create&gt;Areas</p>
 <p>命令流：A、AL、BLC4、BLC5、CYL4、CYL5，SPH4</p>
@@ -760,6 +798,30 @@
 <td align="center">List of lines defining the path along which the pattern is to be dragged (6 maximum if using keyboard entry). Must be a continuous set of lines.</td>
 </tr>
 </tbody></table>
+<h3 id="VROTAT-面旋转成体"><a href="#VROTAT-面旋转成体" class="headerlink" title="VROTAT(面旋转成体)"></a>VROTAT(面旋转成体)</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Modeling&gt;Operate&gt;Extrude&gt;Areas&gt;About Axis</p>
+<p>Description : VROTAT, NA1, NA2, NA3, NA4, NA5, NA6, PAX1, PAX2, ARC, NSEG</p>
+<table>
+<thead>
+<tr>
+<th align="center">VROTAT</th>
+<th align="center">NA1-NA6</th>
+<th align="center">PAX1, PAX2</th>
+<th align="center">ARC</th>
+<th align="center">NSEG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">List of areas in the pattern to be rotated (6 maximum if using keyboard entry)</td>
+<td align="center">Keypoints defining the axis about which the area pattern is to be rotated.</td>
+<td align="center">Arc length (in degrees).</td>
+<td align="center">Number of volumes (8 maximum) around circumference. Defaults to minimum required for 90° (maximum) arcs</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意事项：从面-体后要检查几何体是否真正融合（是否有节点多编号的情况），考虑是否采用glue命令，检查完成后，重新编号命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nummrg,all</span><br><span class="line">numcmp,all</span><br></pre></td></tr></table></figure>
+</blockquote>
 <hr>
 <hr>
 <h1 id="选择集命令的使用"><a href="#选择集命令的使用" class="headerlink" title="选择集命令的使用"></a>选择集命令的使用</h1><p>GUI : Utility Menu&gt;Select&gt;Entities</p>
@@ -791,6 +853,10 @@
 <h5 id="enddo"><a href="#enddo" class="headerlink" title="*enddo"></a>*enddo</h5><p>GUI : This command cannot be accessed from a menu.</p>
 <p>Description : One *ENDDO is required for each nested do-loop. The *ENDDO command must appear on the same file as the *DO command.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*do,i,1,1,0</span><br><span class="line">lsel,s,loc,y,1*i</span><br><span class="line">*enddo</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择命令的等效使用"><a href="#选择命令的等效使用" class="headerlink" title="选择命令的等效使用"></a>选择命令的等效使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsel,s,loc,z,0</span><br><span class="line">!等效于</span><br><span class="line">asel,s,loc,z,0</span><br><span class="line">lsla,s  !指的是选择面上的所有线</span><br></pre></td></tr></table></figure>
+
+
 
 <hr>
 <hr>
@@ -1009,6 +1075,175 @@
 
 <h3 id="补充-利用循环命令进行切割"><a href="#补充-利用循环命令进行切割" class="headerlink" title="补充-利用循环命令进行切割"></a>补充-利用循环命令进行切割</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*do,i,1,5,1    !循环切割5次</span><br><span class="line">wpoffs,,30     !柱坐标系下，每次切割完旋转30度</span><br><span class="line">asbw,all       !执行坐标系切割命令</span><br><span class="line">*enddo         !结束循环</span><br></pre></td></tr></table></figure>
 
+<hr>
+<hr>
+<h1 id="ANSYS-材料输入与单元介绍"><a href="#ANSYS-材料输入与单元介绍" class="headerlink" title="ANSYS 材料输入与单元介绍"></a>ANSYS 材料输入与单元介绍</h1><h2 id="ANSYS材料简介"><a href="#ANSYS材料简介" class="headerlink" title="ANSYS材料简介"></a>ANSYS材料简介</h2><p>作用：ANSYS计算结果的准确,不仅与模型、网格、算法相关，还取决于材料定义的正确与否</p>
+<p>材料类型：线性、非线性</p>
+<blockquote>
+<p>线性：指定弹性模量，密度和泊松比即可确定</p>
+<p>非线性：非线性弹性、率不相关塑性材料……</p>
+</blockquote>
+<hr>
+<h2 id="单元简介"><a href="#单元简介" class="headerlink" title="单元简介"></a>单元简介</h2><p>概念：简单而又相互作用的元素，利用有限数量的未知量去逼近无限未知量的真实系统</p>
+<p>分类：结构单元（主要）、热单元、电磁单元、耦合场单元、流体单元、网分单元、显示动力分析单元</p>
+<p>单元类型（7大类型进一步细分）：杆单元、梁单元、管单元、2D实体单元、3D实体单元、壳单元、弹簧单元、质量单元、接触单元、矩阵单元、表面效应单元、特殊单元、MPC184单元</p>
+<h3 id="单元特性"><a href="#单元特性" class="headerlink" title="单元特性"></a>单元特性</h3><h4 id="特性分类：输入参数、结果输出、坐标系、节点和单元荷载、单元形状"><a href="#特性分类：输入参数、结果输出、坐标系、节点和单元荷载、单元形状" class="headerlink" title="特性分类：输入参数、结果输出、坐标系、节点和单元荷载、单元形状"></a>特性分类：输入参数、结果输出、坐标系、节点和单元荷载、单元形状</h4><h5 id="输入参数："><a href="#输入参数：" class="headerlink" title="输入参数："></a>输入参数：</h5><p>单元名称：两部分组成，字符名称+单元序号 beam189&#x3D;beam+189（唯一编号）</p>
+<p>单元节点：单元由节点组成，通过lK来描述</p>
+<p>自由度：特定单元类型都有自由度集，并构成节点未知量、位移、转角、温度、压力等，自由度集由单元类型确定</p>
+<p>实常数：单元参数，用于计算单元矩阵，例如面积、厚度、高度等，由单元类型确定</p>
+<p>关键项：单元附加功能的打开与关闭,例如Solid65单元的压碎功能等</p>
+<h5 id="结果输出："><a href="#结果输出：" class="headerlink" title="结果输出："></a>结果输出：</h5><p>节点解：整个模型活动自由度的解,例如位移、温度、约束节点反力</p>
+<p>单元解：属干派生解.根据结构的自由度推导而来,表达单元的应变应力</p>
+<p>单元节点解：将单元解进行一定的平均得到</p>
+<hr>
+<h2 id="单元举例"><a href="#单元举例" class="headerlink" title="单元举例"></a>单元举例</h2><h3 id="梁单元Beam188-x2F-189"><a href="#梁单元Beam188-x2F-189" class="headerlink" title="梁单元Beam188&#x2F;189"></a>梁单元Beam188&#x2F;189</h3><p>单元适用范围：考虑剪切变形影响、适用于分析细长到中等细长梁结构</p>
+<p>两者区别：beam188—两节点；beam189—三节点</p>
+<p>Beam188单元定义图</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129115034015.png" alt="image-20230129115034015"></p>
+<p>Beam189单元定义图</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129115100795.png" alt="image-20230129115100795"></p>
+<blockquote>
+<p>单元定义节点：I，J，K，L</p>
+<p>两个坐标系：全局坐标系，单元坐标系（用于单元结果输出-单元表）</p>
+<p>①-⑤：施加荷载的正方向</p>
+</blockquote>
+<h4 id="单元表"><a href="#单元表" class="headerlink" title="单元表"></a>单元表</h4><p>简介：区别于实体单元，专属于梁壳单元特殊结果的一种输出方式。</p>
+<p>单元输出说明：</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129141500924.png" alt="image-20230129141500924"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129141701645.png" alt="image-20230129141701645"></p>
+<p>命令<em>ETABLE</em>的表项和序号：</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129142101040.png" alt="image-20230129142101040"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">!轴力</span><br><span class="line">etable,zl1,zmisc,1</span><br><span class="line">etable,zl2,zmisc,14</span><br><span class="line">plls,zl1,zl2</span><br><span class="line">!剪力</span><br><span class="line">etable,jl1,zmisc,6</span><br><span class="line">etable,jl1,zmisc,19</span><br><span class="line">plls,jl1,jl2</span><br><span class="line">!弯矩</span><br><span class="line">etable,wj1,zmisc,3</span><br><span class="line">etable,wj1,zmisc,16</span><br><span class="line">plls,wj1,wj2</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="壳单元shell181"><a href="#壳单元shell181" class="headerlink" title="壳单元shell181"></a>壳单元shell181</h2><p>单元适用范围：单元适用范围：模拟薄壳至中等厚度壳结构，4节点单元，线性分析以及大转动、大应变的非线性分析，特别适用分层结构。</p>
+<p>单元输入参数：厚度</p>
+<blockquote>
+<p>方式1：实常数-前提是单层结构</p>
+<p>方式2：定义截面-适合单层&#x2F;多层</p>
+</blockquote>
+<hr>
+<hr>
+<h1 id="网格划分"><a href="#网格划分" class="headerlink" title="网格划分"></a>网格划分</h1><h3 id="网格划分概述"><a href="#网格划分概述" class="headerlink" title="网格划分概述"></a>网格划分概述</h3><p>基本概念：结构离散化的过程，建立有限元模型的关键步骤，网格形式将对计算精度和计算规模产生直接影响</p>
+<p>基本思想：离散化，以有限代无限，以直代曲</p>
+<p>网格划分原则：网格数量</p>
+<blockquote>
+<p>网格数量要衡量计算机的计算时间和精度</p>
+</blockquote>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129151023514.png" alt="image-20230129151023514"></p>
+<p>网格划分的基本原则：</p>
+<p>1、网格疏密（对关键区域的处理）</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129151118524.png" alt="image-20230129151118524"></p>
+<p>2、网格质量（交叉，钝角，面积为零）</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129151206230.png" alt="image-20230129151206230"></p>
+<p>3、位移协调性（由于内力通过节点传递，因此节点需要共享且具有相同的属性）</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129151249236.png" alt="image-20230129151249236"></p>
+<p>4、网格布局（如果原模型为一个对称结构，划分网格时也要对称得划分，以此不影响最终结果）</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129151348837.png" alt="image-20230129151348837"></p>
+<hr>
+<h2 id="单元属性分配"><a href="#单元属性分配" class="headerlink" title="单元属性分配"></a>单元属性分配</h2><p>概念：将定义的属性与几何模型相关联</p>
+<p>GUI：Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes</p>
+<p>命令流：KATT, LATT, AATT,VATT</p>
+<blockquote>
+<p>注意事项：与选择命令族的联合使用；LATT, AATT方向关键点、截面类型</p>
+</blockquote>
+<h3 id="KATT"><a href="#KATT" class="headerlink" title="KATT"></a>KATT</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes&gt;All Keypoints</p>
+<p>Description : KATT, MAT, REAL, TYPE, ESYS</p>
+<blockquote>
+<p>Material number, real constant set number, type number, and coordinate system number to be associated with selected, unmeshed keypoints.</p>
+</blockquote>
+<h3 id="LATT"><a href="#LATT" class="headerlink" title="LATT"></a>LATT</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh Attributes&gt;All Lines</p>
+<p>Description : LATT, MAT, REAL, TYPE, –, KB, KE, SECNUM</p>
+<blockquote>
+<p>Material number, real constant set number, type number, and coordinate system number to be associated with selected, unmeshed keypoints.</p>
+<p>Beginning and ending orientation keypoints to be associated with selected, unmeshed lines.</p>
+<p>Section identifier to be associated with selected, unmeshed lines.</p>
+</blockquote>
+<hr>
+<h2 id="单元尺寸控制"><a href="#单元尺寸控制" class="headerlink" title="单元尺寸控制"></a>单元尺寸控制</h2><p>GUI：Main Menu&gt;Preprocessor&gt;Meshing&gt;Size Cntrls</p>
+<p>命令流：Lesize, Aesize, Esize, (Desize, Smrtsize, Kesize)用处较小</p>
+<blockquote>
+<p>注意事项：</p>
+<p>1、Desize：映射网格单元尺寸控制</p>
+<p>2、Smrtsize：自由网格单元尺寸控制</p>
+<p>3、尺寸控制优先级：Lesize&gt;Aesize&gt;Esize</p>
+</blockquote>
+<h3 id="Lesize"><a href="#Lesize" class="headerlink" title="Lesize"></a>Lesize</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Size Cntrls&gt;ManualSize&gt;Lines&gt;</p>
+<p>Description : LESIZE, NL1, SIZE, ANGSIZ, NDIV, SPACE, KFORC, LAYER1, LAYER2, KYNDIV</p>
+<hr>
+<h2 id="单元形状控制"><a href="#单元形状控制" class="headerlink" title="单元形状控制"></a>单元形状控制</h2><p>网格形状：2D - 四边形和三角形 3D - 六面体、四面体</p>
+<p>形状优势比较：四面体修改快捷方便，六面体美观，精度高，节约计算时间</p>
+<p>GUI：Main Menu&gt;Preprocessor&gt;Meshing&gt;Meshtool</p>
+<p>命令流：Mshape</p>
+<h3 id="Mshape"><a href="#Mshape" class="headerlink" title="Mshape"></a>Mshape</h3><p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesher Opts</p>
+<p>Description : MSHAPE, KEY, Dimension</p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129161317624.png" alt="image-20230129161317624"></p>
+<blockquote>
+<p> 考虑单元是否支持所选的单元形状；比如solid65就不支持四面体</p>
+</blockquote>
+<hr>
+<h2 id="高级划分方式-映射"><a href="#高级划分方式-映射" class="headerlink" title="高级划分方式-映射"></a>高级划分方式-映射</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129162531122.png" alt="image-20230129162531122"></p>
+<h3 id="AMAP"><a href="#AMAP" class="headerlink" title="AMAP"></a>AMAP</h3><p>简介：AMAP命令是ANSYS内部的一个<strong>简化</strong>体映射命令</p>
+<p>GUI : Main Menu&gt;Preprocessor&gt;Meshing&gt;Mesh&gt;Areas&gt;Mapped&gt;By Corners</p>
+<p>Description : AMAP, AREA, KP1, KP2, KP3, KP4</p>
+<table>
+<thead>
+<tr>
+<th align="center">AMAP</th>
+<th align="center">AREA</th>
+<th align="center">KP1, KP2, KP3, KP4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command name</td>
+<td align="center">Area number of area to be meshed</td>
+<td align="center">Keypoints defining corners of the mapped mesh. Three or four corners may be specified, and may be input <strong>in any order</strong></td>
+</tr>
+</tbody></table>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129162556091.png" alt="image-20230129162556091"></p>
+<hr>
+<h2 id="高级划分方式-扫掠"><a href="#高级划分方式-扫掠" class="headerlink" title="高级划分方式-扫掠"></a>高级划分方式-扫掠</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129163312987.png" alt="image-20230129163312987"></p>
+<blockquote>
+<p>扫掠可以理解成从指定源面网格投影向目标网格从而划分整个体</p>
+<p>通过体两端建立MESH200的单元类型进行扫掠</p>
+</blockquote>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129163454110.png" alt="image-20230129163454110"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129163532519.png" alt="image-20230129163532519"></p>
+<hr>
+<h2 id="网格有效性及网格修改"><a href="#网格有效性及网格修改" class="headerlink" title="网格有效性及网格修改"></a>网格有效性及网格修改</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129163810350.png" alt="image-20230129163810350"></p>
+<blockquote>
+<p>检查操作由软件自行进行，不需重复操作</p>
+</blockquote>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129165434254.png" alt="image-20230129165434254"></p>
+<blockquote>
+<p>细化限制可以理解为不受外界环境作用</p>
+</blockquote>
+<hr>
+<hr>
+<h1 id="加载与求解"><a href="#加载与求解" class="headerlink" title="加载与求解"></a>加载与求解</h1><h2 id="荷载简介"><a href="#荷载简介" class="headerlink" title="荷载简介"></a>荷载简介</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129200740010.png" alt="image-20230129200740010"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129200822721.png" alt="image-20230129200822721"></p>
+<hr>
+<h2 id="集中载荷的施加"><a href="#集中载荷的施加" class="headerlink" title="集中载荷的施加"></a>集中载荷的施加</h2><h3 id="面单元荷载施加："><a href="#面单元荷载施加：" class="headerlink" title="面单元荷载施加："></a>面单元荷载施加：</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129201859734.png" alt="image-20230129201859734"></p>
+<blockquote>
+<p>圆弧状均布载荷的施加流程：选取线&gt;选取线上节点&gt;旋转节点坐标系&gt;施加载荷</p>
+</blockquote>
+<h4 id="Sftran"><a href="#Sftran" class="headerlink" title="Sftran"></a>Sftran</h4><p>GUI : Main Menu&gt;Preprocessor&gt;Loads&gt;Define Loads&gt;Operate&gt;Transfer to FE&gt;Surface Loads</p>
+<p>Description : Transfer the solid model surface loads to the finite element model.</p>
+<h3 id="梁单元荷载施加："><a href="#梁单元荷载施加：" class="headerlink" title="梁单元荷载施加："></a>梁单元荷载施加：</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129202355310.png" alt="image-20230129202355310"></p>
+<h3 id="自由度荷载的施加："><a href="#自由度荷载的施加：" class="headerlink" title="自由度荷载的施加："></a>自由度荷载的施加：</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129203320963.png" alt="image-20230129203320963"></p>
+<h3 id="对称与反对称边界"><a href="#对称与反对称边界" class="headerlink" title="对称与反对称边界"></a>对称与反对称边界</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129204705309.png" alt="image-20230129204705309"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129205607218.png" alt="image-20230129205607218"></p>
+<h3 id="重力荷载施加"><a href="#重力荷载施加" class="headerlink" title="重力荷载施加"></a>重力荷载施加</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129211348589.png" alt="image-20230129211348589"></p>
+<h3 id="求解类型与求解设置"><a href="#求解类型与求解设置" class="headerlink" title="求解类型与求解设置"></a>求解类型与求解设置</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129211847254.png" alt="image-20230129211847254"></p>
+<hr>
+<hr>
+<h1 id="结果后处理"><a href="#结果后处理" class="headerlink" title="结果后处理"></a>结果后处理</h1><h2 id="POST1-x2F-POST26结果后处理器"><a href="#POST1-x2F-POST26结果后处理器" class="headerlink" title="POST1&#x2F;POST26结果后处理器"></a>POST1&#x2F;POST26结果后处理器</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129212952964.png" alt="image-20230129212952964"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129213149320.png" alt="image-20230129213149320"></p>
+<hr>
+<h2 id="结果读取与结果坐标系"><a href="#结果读取与结果坐标系" class="headerlink" title="结果读取与结果坐标系"></a>结果读取与结果坐标系</h2><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129213329341.png" alt="image-20230129213329341"></p>
+<hr>
+<h3 id="计算结果的图形与文本显示"><a href="#计算结果的图形与文本显示" class="headerlink" title="计算结果的图形与文本显示"></a>计算结果的图形与文本显示</h3><p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129214444912.png" alt="image-20230129214444912"></p>
+<p><img src="/posts/Users\64859\AppData\Roaming\Typora\typora-user-images\image-20230129215543034.png" alt="image-20230129215543034"></p>
 
         </div>
 
